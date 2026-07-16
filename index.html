@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flux Studio — Die App, die Apps baut</title>
+<meta name="description" content="Flux Studio: Beschreibe deine Idee, der KI-Agent schreibt den Code, dein Handy baut die App. Komplett auf dem Gerät. Kostenfrei, solange Flux in Entwicklung ist.">
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #171715;
+    --border: #2e2e2a;
+    --flux: #e8d5a3;
+    --flux2: #c4a96d;
+    --teal: #5ecfb8;
+    --text: #e8e6e0;
+    --text-mid: #9a9a92;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    line-height: 1.7;
+  }
+  .hülle { max-width: 720px; margin: 0 auto; padding: 0 20px; }
+
+  header { padding: 72px 0 56px; text-align: center; }
+  .marke {
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--flux2);
+    margin-bottom: 20px;
+  }
+  h1 { font-size: 40px; line-height: 1.15; color: #fff; margin-bottom: 16px; }
+  .untertitel { font-size: 18px; color: var(--text-mid); max-width: 540px; margin: 0 auto 28px; }
+  .frei {
+    display: inline-block;
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--flux);
+    border: 1px solid rgba(232,213,163,0.35);
+    background: rgba(232,213,163,0.06);
+    border-radius: 999px;
+    padding: 8px 20px;
+  }
+
+  .kette {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--teal);
+    text-align: center;
+    padding: 14px 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    margin: 0 0 56px;
+  }
+
+  h2 {
+    font-size: 20px;
+    color: var(--flux);
+    margin: 0 0 18px;
+  }
+  section { margin-bottom: 56px; }
+  .merkmale { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .merkmale { grid-template-columns: 1fr; } }
+  .karte {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .karte h3 { font-size: 16px; color: var(--text); margin-bottom: 6px; }
+  .karte p { font-size: 14px; color: var(--text-mid); }
+
+  .callout {
+    border: 1px solid rgba(232,213,163,0.2);
+    border-left: 3px solid var(--flux);
+    background: rgba(232,213,163,0.04);
+    padding: 14px 16px;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+  .callout strong { color: var(--flux); }
+
+  .news-karte {
+    display: block;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+    text-decoration: none;
+    transition: border-color .15s;
+  }
+  .news-karte:hover { border-color: var(--flux2); }
+  .news-kopf {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--flux2);
+    margin-bottom: 8px;
+  }
+  .news-karte h3 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
+  .news-karte p { font-size: 14px; color: var(--text-mid); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0 48px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+  footer a { color: var(--text-mid); }
+  footer a:hover { color: var(--flux); }
+</style>
+</head>
+<body>
+  <div class="hülle">
+    <header>
+      <div class="marke">Flux Studio</div>
+      <h1>Die App,<br>die Apps baut.</h1>
+      <p class="untertitel">Beschreibe deine Idee. Der KI-Agent schreibt den
+      Code. Dein Handy kompiliert, packt, signiert und installiert die
+      fertige App — alles auf dem Gerät.</p>
+      <div class="frei">Kostenfrei, solange Flux in Entwicklung ist</div>
+    </header>
+
+    <div class="kette">
+      Idee &nbsp;→&nbsp; Code &nbsp;→&nbsp; Kompilieren &nbsp;→&nbsp;
+      Packen &nbsp;→&nbsp; Signieren &nbsp;→&nbsp; App
+    </div>
+
+    <section>
+      <h2>Was Flux kann</h2>
+      <div class="merkmale">
+        <div class="karte">
+          <h3>App-Fabrik in der Hosentasche</h3>
+          <p>Vom Satz zur installierten App, komplett auf dem Handy.
+          Kein PC, keine Cloud-Pflicht, kein Umweg.</p>
+        </div>
+        <div class="karte">
+          <h3>Dein Agent, deine Modelle</h3>
+          <p>Kuratierte KI-Modelle vieler Anbieter — wähle aus der Liste
+          oder bring deinen eigenen Schlüssel mit.</p>
+        </div>
+        <div class="karte">
+          <h3>Bleibt kühl</h3>
+          <p>Flux misst die Temperatur und regelt die Baugeschwindigkeit
+          selbst: Kühl, Ausgewogen oder Schnell — du entscheidest.</p>
+        </div>
+        <div class="karte">
+          <h3>Deine Daten gehören dir</h3>
+          <p>Projekte bleiben auf dem Gerät. Das Cloud-Backup ist
+          Ende-zu-Ende verschlüsselt — wir können es nicht lesen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="callout">
+        <strong>Ehrlich gesagt:</strong> Flux ist in Entwicklung. Manches
+        ist noch im Bau, Grenzen sagen wir offen — hier und in der App,
+        statt sie zu verstecken.
+      </div>
+    </section>
+
+    <section>
+      <h2>Werkstatt-Meldungen</h2>
+      <div id="news">Lade Meldungen …</div>
+    </section>
+
+    <footer>
+      <a href="impressum.html">Impressum</a>
+    </footer>
+  </div>
+
+  <script>
+    // Dieselbe Quelle wie die App: news/index.json.
+    const typNamen = {
+      UPDATE: "Update", COMMUNITY: "Community",
+      MODELL: "Modell-Spotlight", ROADMAP: "Roadmap",
+    };
+    fetch("news/index.json")
+      .then(a => a.json())
+      .then(daten => {
+        const ziel = document.getElementById("news");
+        ziel.innerHTML = "";
+        for (const m of daten.meldungen) {
+          const karte = document.createElement("a");
+          karte.className = "news-karte";
+          karte.href = m.dokument;
+          const kopf = document.createElement("div");
+          kopf.className = "news-kopf";
+          kopf.textContent = (typNamen[m.typ] || m.typ) + " · " + m.datum;
+          const titel = document.createElement("h3");
+          titel.textContent = m.titel;
+          const teaser = document.createElement("p");
+          teaser.textContent = m.teaser;
+          karte.append(kopf, titel, teaser);
+          ziel.appendChild(karte);
+        }
+      })
+      .catch(() => {
+        document.getElementById("news").textContent =
+          "Meldungen konnten nicht geladen werden.";
+      });
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dein Handy ist jetzt eine App-Fabrik</title>
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #171715;
+    --border: #2e2e2a;
+    --flux: #e8d5a3;
+    --flux2: #c4a96d;
+    --teal: #5ecfb8;
+    --text: #e8e6e0;
+    --text-mid: #9a9a92;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    line-height: 1.7;
+    padding: 24px 20px 60px;
+  }
+  .tag {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flux2);
+    margin-bottom: 14px;
+  }
+  h1 {
+    font-size: 30px;
+    line-height: 1.2;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .datum {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+  h2 {
+    font-size: 18px;
+    color: var(--flux);
+    margin: 28px 0 10px;
+  }
+  p { font-size: 15px; color: var(--text-mid); margin-bottom: 14px; }
+  p strong { color: var(--text); }
+  .callout {
+    border: 1px solid rgba(232,213,163,0.2);
+    border-left: 3px solid var(--flux);
+    background: rgba(232,213,163,0.04);
+    padding: 14px 16px;
+    margin: 18px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+  .callout strong { color: var(--flux); }
+  ul { margin: 0 0 14px 20px; }
+  li { font-size: 15px; color: var(--text-mid); margin-bottom: 6px; }
+  .kette {
+    font-family: monospace;
+    font-size: 13px;
+    color: var(--teal);
+    text-align: center;
+    padding: 14px 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    margin: 18px 0;
+  }
+  .fuss {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="tag">Update · Flux Studio</div>
+  <h1>Dein Handy ist jetzt eine App-Fabrik</h1>
+  <div class="datum">16. Juli 2026</div>
+
+  <p>Vor einer Woche stand hier: der KI-Agent zieht ein. Heute steht
+  hier etwas, das wir selbst erst glauben mussten, als wir es sahen:
+  <strong>Flux baut komplette Android-Apps direkt auf dem Handy.</strong>
+  Kein PC, keine Cloud, kein Umweg.</p>
+
+  <div class="kette">
+    Code &nbsp;→&nbsp; Kompilieren &nbsp;→&nbsp; Packen &nbsp;→&nbsp;
+    Signieren &nbsp;→&nbsp; Installieren
+  </div>
+
+  <p>Du beschreibst dem Agenten deine Idee. Er schreibt den Code, du
+  bestätigst — und ein paar Sekunden später fragt dich Android, ob du
+  <strong>deine eigene App</strong> installieren willst. Der komplette
+  Weg vom Satz zur App auf dem Homescreen passiert in deiner
+  Hosentasche.</p>
+
+  <h2>Jedes Projekt ist eine eigene App</h2>
+  <p>Ein Projekt in Flux <strong>ist</strong> eine App: Es bekommt beim
+  ersten Bau seine eigene, dauerhafte Identität. Dein Taschenrechner
+  und dein Spiel stehen nebeneinander im Launcher, jedes unter seinem
+  eigenen Namen — und wenn du ein Projekt umbenennst, bleibt seine App
+  dieselbe, nur der Name unterm Icon zieht mit.</p>
+
+  <h2>Dein Handy bleibt dabei kühl</h2>
+  <p>Kompilieren ist Schwerstarbeit. Flux misst deshalb laufend die
+  Temperatur und regelt die Baugeschwindigkeit selbst — in den Optionen
+  wählst du, was dir lieber ist: <strong>Kühl</strong>, <strong>
+  Ausgewogen</strong> oder <strong>Schnell</strong>. Die Thermik-Leiste
+  im Terminal zeigt dir live, was passiert.</p>
+
+  <h2>Einrichtung ohne Rätselraten</h2>
+  <ul>
+    <li>Beim ersten Start führt dich Flux jetzt direkt zur einzigen
+    Erlaubnis, die Android fürs Installieren verlangt — ein Tipp,
+    fertig.</li>
+    <li>Die KI-Modelle wählst du ab sofort aus einer <strong>kuratierten
+    Liste</strong> statt kryptische Namen abzutippen. Jedes Modell darin
+    kann Werkzeuge bedienen — die Pflicht-Fähigkeit für einen Agenten,
+    der wirklich baut statt nur redet.</li>
+  </ul>
+
+  <div class="callout">
+    <strong>Ehrlich gesagt:</strong> Die Geräte-Fabrik baut heute
+    klassische Android-Apps aus reinem Kotlin. Jetpack Compose braucht
+    weiterhin den Flux-Bau-Server auf dem PC — die Grenze sagen wir dir
+    offen, statt sie zu verstecken. Auch sie fällt noch.
+  </div>
+
+  <h2>Und als Nächstes?</h2>
+  <p>Eigene Icons für deine Apps, einfachere KI-Anmeldung ohne
+  Schlüssel-Kopieren, und die Spiele-Schiene nimmt Form an. Du liest
+  es hier zuerst.</p>
+
+  <div class="fuss">Flux Studio · Werkstatt-Meldung 002</div>
+</body>
+</html>
