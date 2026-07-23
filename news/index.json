@@ -1,16 +1,23 @@
 {
   "meldungen": [
     {
+      "datum": "2026-07-21",
+      "typ": "UPDATE",
+      "titel": "Aus Flux wird IDEom",
+      "teaser": "Die Werkstatt bekommt ihren Namen: IDEom. Dazu eine echte Coding-Schrift im Editor und ein ehrliches Supporter-Modell.",
+      "dokument": "news/2026-07-21-ideom.html"
+    },
+    {
       "datum": "2026-07-16",
       "typ": "UPDATE",
       "titel": "Dein Handy ist jetzt eine App-Fabrik",
-      "teaser": "Flux baut komplette Apps direkt auf dem Gerät — vom Satz zur installierten App, ohne PC.",
+      "teaser": "IDEom baut komplette Apps direkt auf dem Gerät — vom Satz zur installierten App, ohne PC.",
       "dokument": "news/2026-07-16-app-fabrik.html"
     },
     {
       "datum": "2026-07-08",
       "typ": "ROADMAP",
-      "titel": "Flux Studio ist im Bau",
+      "titel": "IDEom ist im Bau",
       "teaser": "Editor, Tab-Navigation und drei Designs stehen — der KI-Agent kommt als Nächstes.",
       "dokument": "news/2026-07-08-flux-im-bau.html"
     }

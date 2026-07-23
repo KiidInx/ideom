@@ -1,0 +1,12 @@
+# NIEMALS veröffentlichen — Businessplan, interne Dokumente
+Dokumente/
+
+# Rohe Arbeits-Screenshots (nicht auf der Seite genutzt)
+bilder/roh/
+
+# Sicherungskopien
+index_alt.html
+
+# System
+Thumbs.db
+.DS_Store

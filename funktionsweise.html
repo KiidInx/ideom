@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>So funktioniert's — IDEom</title>
+<meta name="description" content="Wie IDEom aus einem Satz eine installierte Android-App macht: Diff-Flow, Bauen auf dem Gerät, Selbstreparatur und das Snapshot-Netz — Schritt für Schritt erklärt.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="marke" href="index.html"><span class="ide">IDE</span>om</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="beta-pille">ALPHA</span>
+      <div class="tab-nav" id="tabNav"></div>
+    </div>
+  </header>
+
+  <div class="seiten-kopf">
+    <div class="s-eyebrow">So funktioniert's</div>
+    <h1>Vom Satz zur App — der ganze Weg, ehrlich erklärt.</h1>
+    <p class="s-intro" style="margin-top: 18px;">
+      Viele KI-Werkzeuge werfen dir Code hin und lassen dich damit allein.
+      IDEom geht den Weg zu Ende: Der Code wird geschrieben, von dir geprüft,
+      auf deinem Gerät gebaut und installiert. Hier siehst du, was dabei
+      wirklich passiert.
+    </p>
+  </div>
+
+  <section>
+    <div class="s-eyebrow">Schritt 1 · Beschreiben</div>
+    <h2>Du redest, der Agent versteht das Projekt.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="bilder/shot-agent.png" alt="IDEom-Screenshot: der Agent-Chat repariert einen Compile-Fehler">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>Der Agent-Chat</h3>
+        <p>Rausziehen für mehr</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>Der Agent-Chat</h3>
+        <p>Hier sprichst du mit deinem KI-Partner. Der Agent hat echte
+        Werkzeuge: Er kann Dateien in deinem Projekt lesen, gezielt
+        durchsuchen und Änderungen vorbereiten — er rät nicht ins Blaue,
+        er schaut nach.</p>
+        <p>Jeder Werkzeug-Einsatz wird im Chat sichtbar protokolliert.
+        Du siehst immer, was der Agent gerade tut und warum.</p>
+      </div>
+    </div>
+    <p class="s-intro">
+      Du beschreibst in normaler Sprache, was deine App können soll —
+      „Bau mir eine Einkaufslisten-App mit Kategorien". Der Agent schaut
+      sich dein Projekt an, bevor er loslegt: Er kann Dateien lesen und
+      gezielt durchsuchen, statt ins Blaue zu raten. Bei einem neuen
+      Projekt legt er die Grundstruktur selbst an.
+    </p>
+    <p class="s-intro">
+      Welches KI-Modell dabei denkt, entscheidest du: IDEom ist
+      modell-offen. Du verbindest deinen eigenen Zugang — auch komplett
+      kostenlose Anbieter sind dabei.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Schritt 2 · Prüfen — der Diff-Flow</div>
+    <h2>Nichts wird geschrieben ohne dein Ja.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="bilder/shot-diff.png" alt="IDEom-Screenshot: die Diff-Ansicht mit Annehmen/Ablehnen">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>Die Diff-Ansicht</h3>
+        <p>Rausziehen für mehr</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>Die Diff-Ansicht</h3>
+        <p>Grün ist, was dazukommt. Rot ist, was wegfällt. Dazu die
+        Datei und die genaue Stelle — mehr braucht es nicht, um eine
+        Änderung ehrlich zu zeigen.</p>
+        <p>Unter jedem Diff stehen zwei Knöpfe: Annehmen und Ablehnen.
+        Erst dein Annehmen schreibt die Änderung wirklich in dein
+        Projekt — und vorher legt IDEom automatisch einen Snapshot an.</p>
+      </div>
+    </div>
+    <p class="s-intro">
+      Bevor der Agent auch nur eine Zeile in dein Projekt schreibt, zeigt
+      IDEom dir die Änderung als <b>Diff</b>: Was kommt dazu (grün), was
+      fällt weg (rot), in welcher Datei, an welcher Stelle. Du liest,
+      du entscheidest — <b>Annehmen</b> oder <b>Ablehnen</b>.
+    </p>
+    <p class="s-intro">
+      Das ist keine Formsache, sondern das Herz von IDEom: Es bleibt
+      <em>dein</em> Projekt. Du lernst nebenbei, wie dein Code aussieht
+      und was sich verändert — statt einer Blackbox zu vertrauen, die
+      irgendwas macht.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Schritt 3 · Bauen &amp; Installieren</div>
+    <h2>Dein Handy kompiliert — und installiert. Wirklich.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="bilder/shot-bau.png" alt="IDEom-Screenshot: die Bau-Kette im Terminal (kompilieren, dexen, packen, signieren)">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>Bau &amp; Installation</h3>
+        <p>Rausziehen für mehr</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>Bau &amp; Installation</h3>
+        <p>Der Kotlin-Compiler läuft direkt auf deinem Handy und macht aus
+        deinem Quellcode eine echte, signierte APK — übersetzen, dexen,
+        packen, signieren. Dabei behält IDEom die Temperatur im Blick
+        (Kühl / Ausgewogen / Schnell).</p>
+        <p>Und es ist ein Fluss: Baut es sauber durch, öffnet sich direkt
+        der ganz normale Android-Installationsdialog. Ein Tipp auf
+        „Aktualisieren", und dein neuer Stand liegt auf dem Homescreen —
+        kein Umweg über einen Store, kein PC.</p>
+        <div class="kartenhand">
+          <img src="bilder/shot-bau.png" alt="Die Bau-Kette im Terminal">
+          <img src="bilder/shot-install.png" alt="Der Android-Installationsdialog">
+        </div>
+      </div>
+    </div>
+    <p class="s-intro">
+      IDEom bringt eine echte Bau-Kette mit: Aus deinem Kotlin-Quellcode
+      wird direkt auf dem Handy eine installierbare APK — ohne Laptop,
+      ohne Cloud-Zwang. Was bisher eine Entwicklungsumgebung auf einem
+      PC brauchte, passiert in deiner Hosentasche.
+    </p>
+    <div class="schritte dreier">
+      <div class="schritt">
+        <div class="schritt-num">ÜBERSETZEN</div>
+        <h3>Quellcode → Bytecode</h3>
+        <p>Der Kotlin-Compiler übersetzt deine Dateien direkt auf dem Gerät.</p>
+      </div>
+      <div class="schritt">
+        <div class="schritt-num">PACKEN</div>
+        <h3>Bytecode → APK</h3>
+        <p>Ressourcen, Code und Manifest werden zu einer echten Android-App gepackt und signiert.</p>
+      </div>
+      <div class="schritt">
+        <div class="schritt-num">SCHONEN</div>
+        <h3>Thermik im Blick</h3>
+        <p>IDEom passt das Bau-Tempo an, damit dein Handy kühl bleibt — von „Kühl" bis „Schnell", du wählst.</p>
+      </div>
+    </div>
+
+    <p class="s-intro" style="margin-top: 28px;">
+      Und es endet nicht bei der fertigen Datei: Baut es sauber durch,
+      öffnet IDEom direkt den ganz normalen Android-Installationsdialog —
+      <b>Bauen und Installieren sind ein Fluss</b>. Du bestätigst, und deine
+      App liegt auf dem Homescreen, wie jede andere. Kein Umweg über einen
+      Store, kein Übertragen auf einen PC.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Die Selbstreparatur</div>
+    <h2>Wenn der Compiler meckert, liest die KI mit.</h2>
+    <p class="s-intro">
+      Jeder, der programmiert, kennt es: Der erste Bauversuch schlägt fehl.
+      Bei IDEom ist das kein Endpunkt, sondern Teil des Kreislaufs — die
+      Fehlermeldungen des Compilers gehen automatisch zurück an den
+      Agenten. Er liest sie, versteht, was schiefging, und schlägt die
+      Korrektur vor — wieder als Diff, wieder mit deinem Ja.
+    </p>
+    <p class="s-intro">
+      Diese Schleife läuft, bis die App sauber baut. Im Test hat ein
+      Modell seinen eigenen Compile-Fehler gefunden und repariert, ohne
+      dass ein Mensch den Fehler auch nur verstehen musste. Genau das
+      unterscheidet eine Werkstatt von einem Chatbot.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Das Sicherheitsnetz</div>
+    <h2>Das Snapshot-Netz: Jeder Stand kommt zurück.</h2>
+    <p class="s-intro">
+      Vor jeder angenommenen Änderung sichert IDEom den Stand deines
+      Projekts als <b>Snapshot</b>. Hat die KI (oder du selbst) etwas
+      verschlimmbessert, springst du mit einem Tipp zu einem früheren
+      Stand zurück — nichts ist je endgültig kaputt.
+    </p>
+    <p class="s-intro">
+      Das nimmt die Angst vorm Experimentieren: Du kannst den Agenten
+      mutig ausprobieren lassen, weil der Rückweg immer offen ist.
+      Mehr dazu unter <a href="sicherheit.html" style="color: var(--gold);">Sicherheit</a>.
+    </p>
+  </section>
+
+  <footer>
+    <div class="klein">© 2026 IDEom · Patrick-Michell Rohleder</div>
+    <nav>
+      <a href="mitmachen.html">Fehler melden</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+</div>
+
+<script src="tasche.js"></script>
+<script src="nav.js"></script>
+
+</body>
+</html>

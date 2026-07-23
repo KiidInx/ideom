@@ -1,0 +1,748 @@
+/* Flux Studio — gemeinsames Stilblatt aller Seiten (dunkel+gold,
+   folgt hell/dunkel automatisch der System-Einstellung). */
+
+:root {
+  --nacht: #faf7f0;
+  --flaeche: #ffffff;
+  --flaeche2: #f1ece0;
+  --linie: #e2dbc8;
+  --text: #211d14;
+  --text-mid: #5f584a;
+  --text-dim: #938b78;
+  --gold: #8a6d1f;
+  --gold-hell: #6e5715;
+  --gold-glow: rgba(138, 109, 31, 0.12);
+  --gruen: #3f7a49;
+  --rot: #a54545;
+  --serif: Georgia, 'Times New Roman', serif;
+  --mono: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --sans: system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nacht: #0e0e10;
+    --flaeche: #1a1a1d;
+    --flaeche2: #232326;
+    --linie: #2e2e33;
+    --text: #ededed;
+    --text-mid: #b9b4a6;
+    --text-dim: #7d786b;
+    --gold: #d4af37;
+    --gold-hell: #f5d576;
+    --gold-glow: rgba(212, 175, 55, 0.14);
+    --gruen: #6aab73;
+    --rot: #c47070;
+  }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--nacht);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Kopfleiste ---------- */
+/* Klebt oben beim Scrollen — Handy wie Desktop. Negativer Rand bricht aus
+   dem .wrap-Padding aus, damit Hintergrund und Trennlinie voll durchlaufen. */
+header {
+  position: sticky; top: 0; z-index: 90;
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 0 -24px; padding: 16px 24px; gap: 16px; flex-wrap: wrap;
+  background: var(--nacht); border-bottom: 1px solid var(--linie);
+}
+.marke {
+  font-family: var(--serif); font-size: 26px; letter-spacing: 0.01em;
+  color: var(--text); text-decoration: none; display: inline-block;
+}
+.marke em { font-style: italic; font-weight: 400; color: var(--gold); }
+.marke .ide { color: var(--gold); }
+.kopf-links { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.kopf-links a {
+  color: var(--text-mid); text-decoration: none; font-size: 14.5px;
+}
+.kopf-links a:hover, .kopf-links a:focus-visible { color: var(--gold); }
+.kopf-links a.aktiv { color: var(--gold); }
+.beta-pille {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  color: var(--gold); border: 1px solid var(--gold);
+  padding: 3px 10px; border-radius: 999px;
+}
+
+/* ---------- Tab-Navigation: Hover-Dropdown (PC) / Drum-Picker (Handy) ---------- */
+.tab-nav { position: relative; }
+.tab-trigger {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--sans); font-size: 14.5px; color: var(--text);
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 999px; padding: 8px 16px; cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.tab-trigger:hover, .tab-trigger:focus-visible { border-color: var(--gold); color: var(--gold); outline: none; }
+.tab-trigger .tt-icon { font-size: 16px; }
+.tab-trigger .tt-pfeil { font-size: 10px; color: var(--gold); transition: transform 0.2s ease; }
+.tab-nav.auf .tab-trigger .tt-pfeil { transform: rotate(180deg); }
+.tab-nav.auf .tab-trigger { border-color: var(--gold); color: var(--gold); }
+
+/* PC: statisches Kreuz-Panel unter dem Trigger (per Klick geöffnet) */
+.tab-flyout {
+  position: absolute; right: 0; top: calc(100% + 10px); z-index: 60;
+  background: var(--flaeche); border: 1px solid var(--linie); border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4); padding: 14px 14px 12px;
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+.tab-nav.auf .tab-flyout { opacity: 1; visibility: visible; transform: none; }
+.fly-titel {
+  text-align: center; font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim);
+  margin-bottom: 12px;
+}
+/* Waagerechte Achse: die Haupttabs (wie die Drum-Mitte, aktiver gold) */
+.fly-haupt { display: flex; gap: 4px; }
+.fly-haupt-item {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  min-width: 76px; padding: 10px 8px; border-radius: 12px;
+  text-decoration: none; color: var(--text-dim); cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.fly-haupt-item .fh-icon { font-size: 24px; line-height: 1; }
+.fly-haupt-item .fh-lbl { font-size: 12.5px; }
+.fly-haupt-item:hover, .fly-haupt-item.fokus { background: var(--flaeche2); color: var(--text); }
+.fly-haupt-item.aktiv { color: var(--gold); }
+.fly-haupt-item.aktiv .fh-icon { text-shadow: 0 0 16px var(--gold-glow); }
+.fly-haupt-item.bald { cursor: default; }
+.fly-haupt-item.bald:hover { background: transparent; color: var(--text-dim); }
+/* Senkrechte Achse: die Subtabs des fokussierten Haupttabs */
+.fly-subband {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--linie);
+}
+.fly-subband.leer { display: none; }
+.fly-subband-item {
+  font-size: 14px; color: var(--text-mid); text-decoration: none;
+  padding: 7px 16px; border-radius: 999px; text-align: center;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.fly-subband-item:hover { color: var(--gold); background: var(--flaeche2); }
+.fly-subband-item.aktiv {
+  color: var(--gold); background: var(--gold-glow);
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+}
+
+/* Login-Knopf: separat in der Kopfleiste, vorerst „bald" (Supabase folgt) */
+.login-knopf {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--sans); font-size: 14px; color: var(--text-dim);
+  background: transparent; border: 1px solid var(--linie);
+  border-radius: 999px; padding: 7px 14px; cursor: default; white-space: nowrap;
+}
+.login-knopf .lk-icon { font-size: 15px; }
+.login-knopf.bald::after {
+  content: "bald"; font-family: var(--mono); font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim);
+  border: 1px solid var(--linie); border-radius: 999px; padding: 1px 6px;
+}
+
+/* Handy: Drum-Picker (Wecker-Stil) */
+.drum-overlay {
+  position: fixed; inset: 0; z-index: 120; background: rgba(0,0,0,0.6);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  display: none; align-items: flex-start;
+}
+.drum-overlay.auf { display: flex; }
+.drum-blatt {
+  background: var(--nacht); width: calc(100% - 24px); margin-left: 12px; margin-right: 12px;
+  display: flex; flex-direction: column;
+  border-radius: 20px; border: 1px solid var(--linie); padding: 14px 0 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: drumauf 0.25s ease;
+}
+@keyframes drumauf { from { transform: translateY(-100%); } to { transform: none; } }
+.drum-griff { order: 5; width: 44px; height: 5px; border-radius: 999px; background: var(--linie); margin: 10px auto 0; }
+.drum-titel {
+  text-align: center; font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 4px;
+}
+/* Zwei Drum-Picker: Haupttabs waagerecht (~2 groß sichtbar, Rest über
+   Punkte), Subtabs senkrecht. Beides Wisch-Drums mit Schnappen. */
+
+/* Waagerechter Haupttab-Drum */
+.hdrum-wrap { position: relative; margin: 12px 0 2px; }
+.hdrum {
+  display: flex; overflow-x: scroll; scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.hdrum::-webkit-scrollbar { display: none; }
+.hdrum-spacer { flex: 0 0 25%; }
+.hdrum-item {
+  flex: 0 0 50%; scroll-snap-align: center; scroll-snap-stop: always;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px;
+  height: 104px; color: var(--text-dim); text-decoration: none; cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.hdrum-item .icon { font-size: 30px; transition: font-size 0.2s ease; }
+.hdrum-item .lbl { font-size: 13px; }
+.hdrum-item.mittig { color: var(--gold); }
+.hdrum-item.mittig .icon { font-size: 42px; }
+.hdrum-item.mittig .lbl { font-size: 15.5px; font-weight: 600; }
+.hdrum-item.bald.mittig { color: var(--text-mid); }
+.hdrum-wrap::before, .hdrum-wrap::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 24%; z-index: 2; pointer-events: none;
+}
+.hdrum-wrap::before { left: 0; background: linear-gradient(90deg, var(--nacht), transparent); }
+.hdrum-wrap::after { right: 0; background: linear-gradient(270deg, var(--nacht), transparent); }
+
+/* Punkt-Indikator (Haupttab-Seiten, wie Android-Homescreen) */
+.kreuz-punkte { display: flex; justify-content: center; gap: 8px; margin-top: 10px; }
+.kp { width: 7px; height: 7px; border-radius: 50%; background: var(--linie); cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
+.kp.an { background: var(--gold); transform: scale(1.3); }
+
+/* Senkrechter Subtab-Drum */
+.vdrum-wrap { position: relative; height: 156px; margin: 12px 8px 0; }
+.vdrum-wrap.leer { display: none; }
+.vdrum-titel { text-align: center; font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); margin-top: 6px; }
+.vdrum-band {
+  position: absolute; left: 0; right: 0; top: 50%; height: 52px; transform: translateY(-50%);
+  border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold);
+  background: var(--gold-glow); border-radius: 8px; z-index: 1; pointer-events: none;
+}
+.vdrum { height: 100%; overflow-y: scroll; scroll-snap-type: y mandatory; scrollbar-width: none; padding: 52px 0; }
+.vdrum::-webkit-scrollbar { display: none; }
+.vdrum-item {
+  height: 52px; scroll-snap-align: center; scroll-snap-stop: always;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: 16px; color: var(--text-dim); text-decoration: none;
+  transition: color 0.15s ease, font-size 0.15s ease;
+}
+.vdrum-item.mittig { color: var(--gold); font-weight: 600; font-size: 17px; }
+.vdrum-wrap::before, .vdrum-wrap::after { content: ""; position: absolute; left: 0; right: 0; height: 52px; z-index: 2; pointer-events: none; }
+.vdrum-wrap::before { top: 0; background: linear-gradient(var(--nacht), transparent); }
+.vdrum-wrap::after { bottom: 0; background: linear-gradient(transparent, var(--nacht)); }
+.vdrum-band::after {
+  content: "→"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--gold); font-family: var(--mono); font-size: 15px;
+}
+
+.drum-hint {
+  text-align: center; font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-top: 14px;
+}
+
+/* ---------- Hero (Startseite) ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px;
+  align-items: center; padding: 64px 0 80px;
+}
+.hero-eyebrow {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 18px;
+}
+h1 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(34px, 5vw, 52px); line-height: 1.12;
+  letter-spacing: -0.01em; text-wrap: balance;
+}
+h1 em { font-style: italic; color: var(--gold-hell); }
+.hero-sub {
+  margin-top: 22px; font-size: 17.5px; color: var(--text-mid);
+  max-width: 46ch;
+}
+.hero-cta { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+.knopf {
+  display: inline-block; text-decoration: none;
+  font-size: 15.5px; font-weight: 600;
+  padding: 13px 26px; border-radius: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none; cursor: pointer; font-family: var(--sans);
+}
+.knopf:focus-visible { outline: 2px solid var(--gold-hell); outline-offset: 3px; }
+.knopf-gold {
+  background: var(--gold); color: var(--nacht);
+  box-shadow: 0 6px 24px var(--gold-glow);
+}
+.knopf-gold:hover { transform: translateY(-1px); box-shadow: 0 10px 30px var(--gold-glow); }
+.knopf-leise {
+  color: var(--text-mid); border: 1px solid var(--linie); background: transparent;
+}
+.knopf-leise:hover { color: var(--text); border-color: var(--text-dim); }
+.hero-note {
+  margin-top: 16px; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
+}
+.hero-note b { color: var(--gruen); font-weight: 500; }
+
+/* ---------- Handy-Mock ---------- */
+.handy {
+  background: var(--flaeche);
+  border: 1px solid var(--linie);
+  border-radius: 34px;
+  padding: 18px 16px 22px;
+  max-width: 360px; margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35), 0 0 0 6px var(--flaeche2);
+}
+.handy-kerbe {
+  width: 84px; height: 5px; border-radius: 999px;
+  background: var(--linie); margin: 0 auto 16px;
+}
+.chat { display: flex; flex-direction: column; gap: 10px; font-size: 13.5px; }
+.blase { border-radius: 14px; padding: 10px 13px; max-width: 88%; }
+.blase-nutzer {
+  align-self: flex-end; background: var(--gold-glow);
+  border: 1px solid var(--gold); color: var(--text);
+  border-bottom-right-radius: 4px;
+}
+.blase-agent { align-self: flex-start; color: var(--text-mid); padding: 2px 2px; }
+.werkzeug {
+  align-self: flex-start; font-family: var(--mono); font-size: 11.5px;
+  color: var(--text-dim); padding: 1px 2px;
+}
+.diff {
+  align-self: stretch; font-family: var(--mono); font-size: 11.5px;
+  background: var(--flaeche2); border: 1px solid var(--linie);
+  border-left: 3px solid var(--gold); border-radius: 10px;
+  padding: 10px 12px; line-height: 1.7;
+  overflow-x: auto;
+}
+.diff .plus { color: var(--gruen); }
+.diff .kopf { color: var(--text-dim); }
+.diff-aktion { align-self: flex-start; display: flex; gap: 8px; }
+.diff-aktion span {
+  font-size: 12px; font-weight: 600; padding: 5px 14px; border-radius: 8px;
+}
+.annehmen { background: var(--gruen); color: var(--nacht); }
+.install {
+  align-self: center; font-family: var(--mono); font-size: 12px;
+  color: var(--gruen); border: 1px dashed var(--gruen);
+  border-radius: 10px; padding: 7px 16px; margin-top: 4px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .chat > * { opacity: 0; animation: auftauchen 0.5s ease forwards; }
+  .chat > *:nth-child(1) { animation-delay: 0.2s; }
+  .chat > *:nth-child(2) { animation-delay: 0.9s; }
+  .chat > *:nth-child(3) { animation-delay: 1.5s; }
+  .chat > *:nth-child(4) { animation-delay: 2.1s; }
+  .chat > *:nth-child(5) { animation-delay: 2.8s; }
+  .chat > *:nth-child(6) { animation-delay: 3.6s; }
+  .chat > *:nth-child(7) { animation-delay: 4.6s; }
+  @keyframes auftauchen { to { opacity: 1; } }
+}
+
+/* ---------- Sektionen & Unterseiten ---------- */
+section { padding: 64px 0; border-top: 1px solid var(--linie); }
+section.ohne-linie { border-top: none; }
+.s-eyebrow {
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(26px, 3.4vw, 36px); line-height: 1.2;
+  text-wrap: balance; margin-bottom: 14px;
+}
+.s-intro { color: var(--text-mid); max-width: 62ch; font-size: 16.5px; }
+.s-intro + .s-intro { margin-top: 12px; }
+.seiten-kopf { padding: 48px 0 8px; }
+
+/* Kreislauf */
+.schritte {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  margin-top: 40px;
+}
+.schritt {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 14px; padding: 22px 20px;
+}
+.schritt-num {
+  font-family: var(--mono); font-size: 11px; color: var(--gold);
+  letter-spacing: 0.15em; margin-bottom: 10px;
+}
+.schritt h3 { font-size: 16.5px; margin-bottom: 6px; }
+.schritt p { font-size: 14px; color: var(--text-mid); }
+
+/* Feature-Raster */
+.merkmale {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  margin-top: 40px;
+}
+.merkmal {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 14px; padding: 24px 22px;
+}
+.merkmal h3 { font-size: 16.5px; margin-bottom: 8px; }
+.merkmal h3 .mono { font-family: var(--mono); font-size: 13px; color: var(--gold); }
+.merkmal p { font-size: 14.5px; color: var(--text-mid); }
+.merkmal.breit { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+.modelle { display: flex; flex-wrap: wrap; gap: 8px; }
+.modell-chip {
+  font-family: var(--mono); font-size: 12px; color: var(--text-mid);
+  border: 1px solid var(--linie); border-radius: 999px; padding: 4px 12px;
+}
+
+/* Stufen */
+.stufen {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+  margin-top: 40px;
+}
+.stufe {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 14px; padding: 24px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.stufe.betont { border-color: var(--gold); box-shadow: 0 0 40px var(--gold-glow); }
+.stufe-name { font-family: var(--serif); font-size: 20px; }
+.stufe-preis { font-family: var(--mono); font-size: 15px; color: var(--gold); }
+.stufe-preis small { color: var(--text-dim); font-size: 11.5px; }
+.stufe ul { list-style: none; display: flex; flex-direction: column; gap: 7px; font-size: 13.5px; color: var(--text-mid); }
+.stufe li::before { content: "— "; color: var(--gold); }
+.stufe .bald {
+  margin-top: auto; font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.12em; color: var(--text-dim); text-transform: uppercase;
+}
+.stufe.wird { opacity: 0.72; }
+.stufen.paar { grid-template-columns: 1fr 1fr; }
+@media (max-width: 600px) { .stufen.paar { grid-template-columns: 1fr; } }
+
+/* Supporter-Wege (Spenden-/Unterstützungs-Dienste nebeneinander) */
+.supporter-wege { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; align-items: center; }
+.supporter-wege .knopf { font-size: 14.5px; padding: 11px 20px; }
+.supporter-wege .dienst-hinweis { font-family: var(--mono); font-size: 11.5px; color: var(--text-dim); }
+
+/* Supporter-Beträge (frei wählbare Spendenhöhe) */
+.beitrag { display: flex; flex-direction: column; gap: 8px; margin: 6px 0 2px; }
+.beitrag-zeile {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: 10px 13px; background: var(--flaeche2);
+  border: 1px solid var(--linie); border-radius: 10px;
+}
+.beitrag-zeile b { font-family: var(--mono); font-size: 15.5px; color: var(--gold); }
+.beitrag-zeile span { font-size: 12.5px; color: var(--text-mid); }
+
+/* Werkstatt-Meldungen */
+.meldungen { margin-top: 36px; display: flex; flex-direction: column; }
+.meldung {
+  display: grid; grid-template-columns: 120px 1fr; gap: 18px;
+  padding: 18px 0; border-bottom: 1px solid var(--linie);
+  text-decoration: none; color: inherit; align-items: baseline;
+}
+.meldung:last-child { border-bottom: none; }
+.meldung:hover h3 { color: var(--gold); }
+.meldung-datum { font-family: var(--mono); font-size: 12px; color: var(--text-dim); }
+.meldung h3 { font-size: 17px; font-weight: 600; transition: color 0.15s ease; }
+.meldung p { font-size: 14.5px; color: var(--text-mid); margin-top: 4px; }
+
+/* Werkstatt-Karten (aufklappbar) auf der Startseite.
+   Antippen öffnet die volle Meldung direkt in der Karte. */
+.news-karten { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+.news-karte {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 14px; overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.2s ease;
+}
+.news-karte[open] { border-color: var(--gold); box-shadow: 0 0 44px var(--gold-glow); }
+.news-karte > summary {
+  cursor: pointer; list-style: none;
+  padding: 20px 22px; position: relative;
+  display: grid; grid-template-columns: 1fr 40px; column-gap: 16px; row-gap: 4px;
+  align-items: start; -webkit-tap-highlight-color: transparent;
+}
+.news-karte > summary::-webkit-details-marker { display: none; }
+.news-karte > summary:focus-visible { outline: 2px solid var(--gold-hell); outline-offset: -2px; border-radius: 14px; }
+.nk-meta {
+  grid-column: 1; font-family: var(--mono); font-size: 11.5px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold);
+}
+.nk-titel { grid-column: 1; font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.25; }
+.nk-teaser { grid-column: 1; font-size: 14.5px; color: var(--text-mid); margin-top: 2px; }
+.nk-pfeil {
+  grid-column: 2; grid-row: 1 / 4; align-self: center; justify-self: end;
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--linie);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 19px; line-height: 1; color: var(--gold);
+  transition: transform 0.25s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.news-karte:hover .nk-pfeil { border-color: var(--gold); }
+.news-karte[open] .nk-pfeil { transform: rotate(45deg); background: var(--gold-glow); border-color: var(--gold); }
+.nk-inhalt { border-top: 1px solid var(--linie); }
+.nk-inhalt iframe { width: 100%; border: 0; display: block; background: var(--nacht); min-height: 220px; }
+@media (prefers-reduced-motion: no-preference) {
+  .news-karte[open] .nk-inhalt { animation: nkauf 0.3s ease; }
+  @keyframes nkauf { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+}
+
+/* Roadmap */
+.fahrplan { margin-top: 36px; display: flex; flex-direction: column; gap: 0; }
+.fp-eintrag {
+  display: grid; grid-template-columns: 130px 16px 1fr; gap: 18px;
+  padding: 16px 0; border-bottom: 1px solid var(--linie);
+  align-items: baseline;
+}
+.fp-eintrag:last-child { border-bottom: none; }
+.fp-wann { font-family: var(--mono); font-size: 12px; color: var(--text-dim); letter-spacing: 0.08em; }
+.fp-punkt { width: 9px; height: 9px; border-radius: 50%; background: var(--linie); position: relative; top: 1px; }
+.fp-punkt.aktiv { background: var(--gold); box-shadow: 0 0 12px var(--gold-glow); }
+.fp-punkt.fertig { background: var(--gruen); }
+/* Vision-Etappe: hohler Goldring — Reiseziel, keine feste Zusage */
+.fp-punkt.vision { background: transparent; border: 1.5px solid var(--gold); width: 8px; height: 8px; }
+.fp-was b { font-weight: 600; }
+.fp-was { font-size: 15px; color: var(--text-mid); }
+
+/* Disclaimer-Karte des Visions-Fahrplans */
+.reise-hinweis {
+  margin: 32px 0 8px; padding: 16px 20px; max-width: 720px;
+  background: var(--gold-glow); border: 1px solid var(--linie);
+  border-left: 3px solid var(--gold); border-radius: 12px;
+  font-size: 14.5px; line-height: 1.6; color: var(--text-mid);
+}
+.reise-hinweis b { color: var(--text); font-weight: 600; }
+.reise-hinweis a { color: var(--gold); }
+
+/* Hinter Flux (persönliche Sektion) */
+.persoenlich {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 16px; padding: 32px 30px; margin-top: 40px;
+  max-width: 720px;
+}
+.persoenlich p { color: var(--text-mid); font-size: 15.5px; margin-bottom: 14px; }
+.persoenlich p:last-child { margin-bottom: 0; }
+.persoenlich .gruss { font-family: var(--serif); font-style: italic; color: var(--text); }
+
+/* FAQ */
+.faq { margin-top: 28px; max-width: 780px; }
+.faq-suche {
+  width: 100%; padding: 13px 16px; margin-bottom: 8px;
+  background: var(--flaeche); border: 1px solid var(--linie); border-radius: 10px;
+  color: var(--text); font-family: var(--sans); font-size: 15px;
+}
+.faq-suche::placeholder { color: var(--text-dim); }
+.faq-suche:focus { outline: none; border-color: var(--gold); }
+.faq-gruppe { margin-top: 30px; }
+.faq-gruppe-titel {
+  font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 2px;
+}
+.faq-leer { display: none; color: var(--text-mid); font-size: 15px; padding: 22px 0; }
+.faq details {
+  border-bottom: 1px solid var(--linie); padding: 4px 0;
+}
+.faq summary {
+  cursor: pointer; list-style: none;
+  font-size: 16.5px; font-weight: 600; padding: 16px 28px 16px 0;
+  position: relative;
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: "+"; position: absolute; right: 4px; top: 14px;
+  font-family: var(--mono); font-size: 18px; color: var(--gold);
+  transition: transform 0.15s ease;
+}
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--text-mid); font-size: 15px; padding: 0 0 18px; max-width: 68ch; }
+.faq details p + p { margin-top: -6px; }
+.faq details a { color: var(--gold); }
+
+/* Mitmachen */
+.melde-karten {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+  margin-top: 40px;
+}
+.melde-karte {
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 14px; padding: 26px 24px;
+  display: flex; flex-direction: column; gap: 12px; align-items: flex-start;
+}
+.melde-karte h3 { font-size: 17px; }
+.melde-karte p { font-size: 14.5px; color: var(--text-mid); }
+.melde-karte .knopf { margin-top: auto; }
+.hinweis-dezent {
+  margin-top: 24px; font-size: 13.5px; color: var(--text-dim); max-width: 68ch;
+}
+
+/* Begriffs-Tooltips: PC = Hover, Handy = Antippen (Karte unten) */
+.begriff {
+  position: relative;
+  border-bottom: 1px dotted var(--gold);
+  cursor: help;
+  -webkit-tap-highlight-color: transparent;
+}
+.begriff:focus { outline: none; }
+.begriff .tip {
+  position: absolute; bottom: calc(100% + 10px); left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 280px; max-width: 76vw;
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 10px; padding: 11px 14px;
+  font-size: 13px; line-height: 1.55; color: var(--text-mid);
+  font-family: var(--sans); font-style: normal; font-weight: 400;
+  letter-spacing: normal; text-transform: none; text-align: left;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 30;
+}
+.begriff:hover .tip, .begriff:focus .tip {
+  opacity: 1; visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+@media (max-width: 700px) {
+  .begriff .tip {
+    position: fixed; left: 14px; right: 14px; bottom: 14px; top: auto;
+    transform: none; width: auto; max-width: none;
+    border-color: var(--gold);
+  }
+  .begriff:hover .tip, .begriff:focus .tip { transform: none; }
+}
+
+/* Themen-Tasche: ein Baustein pro Feature, mitten im Textfluss.
+   Screenshot lugt aus der Tasche; Rausziehen (Handy) oder Klicken (PC)
+   öffnet die Detail-Erklärung zu genau diesem Thema. */
+.tasche {
+  position: relative; width: 250px;
+  margin: 64px auto 16px;
+}
+@media (min-width: 861px) {
+  .tasche.rechts { float: right; margin: 8px 0 20px 30px; }
+}
+.tasche-bild {
+  position: relative; z-index: 1;
+  width: 150px; height: 92px; margin: 0 auto -8px;
+  overflow: hidden;
+  border-radius: 14px 14px 4px 4px;
+  border: 1px solid var(--linie);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  touch-action: none; cursor: grab;
+  user-select: none; -webkit-user-select: none;
+}
+.tasche-bild img {
+  display: block; width: 100%;
+  transform: translateY(calc(-1 * var(--zug, 0px)));
+  transition: transform 0.3s ease;
+  -webkit-user-drag: none;
+}
+.tasche.zieht .tasche-bild img { transition: none; }
+.tasche-front {
+  position: relative; z-index: 3; cursor: pointer;
+  background: var(--flaeche); border: 1px solid var(--linie);
+  border-radius: 16px 16px 20px 20px;
+  padding: 16px 18px; text-align: center;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.18);
+}
+.tasche-front::before {
+  content: ""; position: absolute; left: 12px; right: 12px; top: 7px;
+  border-top: 2px dashed var(--gold); opacity: 0.5;
+  border-radius: 999px;
+}
+.tasche-front h3 { font-size: 15.5px; margin-bottom: 3px; }
+.tasche-front p { font-size: 12.5px; color: var(--text-dim); font-family: var(--mono); }
+.wisch {
+  position: absolute; top: -22px; right: 12px; z-index: 4;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--gold); color: var(--nacht);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; box-shadow: 0 8px 24px var(--gold-glow);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wisch { animation: wischen 2.2s ease-in-out infinite; }
+  @keyframes wischen {
+    0%, 100% { transform: translateY(0); }
+    35% { transform: translateY(-8px); }
+    55% { transform: translateY(0); }
+  }
+}
+.tasche-detail { display: none; }
+
+/* Detail-Ansicht der Tasche (Bild groß + Erklärtext) */
+.detail-kasten {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex; align-items: center; justify-content: center;
+  padding: 18px;
+}
+.detail-kasten[hidden] { display: none; }
+.detail-karte {
+  position: relative; background: var(--nacht);
+  border: 1px solid var(--linie); border-radius: 20px;
+  max-width: 700px; width: 100%; max-height: 86vh; overflow: auto;
+  display: grid; grid-template-columns: 190px 1fr; gap: 24px;
+  padding: 28px; box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+}
+.detail-karte img {
+  width: 100%; border-radius: 14px; border: 1px solid var(--linie);
+  align-self: start;
+}
+.dk-text h3 {
+  font-family: var(--serif); font-weight: 400; font-size: 22px;
+  margin-bottom: 10px; padding-right: 36px;
+}
+.dk-text p { font-size: 15px; color: var(--text-mid); margin-bottom: 10px; }
+.dk-text a { color: var(--gold); }
+.dk-zu {
+  position: absolute; top: 14px; right: 14px;
+  border: 1px solid var(--linie); background: var(--flaeche);
+  color: var(--text); border-radius: 50%; width: 38px; height: 38px;
+  font-size: 15px; cursor: pointer; font-family: var(--sans);
+}
+.dk-zu:hover { border-color: var(--gold); color: var(--gold); }
+@media (max-width: 700px) {
+  .detail-karte { grid-template-columns: 1fr; padding: 22px; }
+  .detail-karte img { max-width: 180px; margin: 0 auto; }
+}
+
+/* Kartenhand: zwei Screenshots wie gehaltene Spielkarten (z.B. Bau + Installation).
+   Wenn eine Kartenhand im Detail steckt, weicht das große Einzelbild. */
+.detail-karte:has(.kartenhand) { grid-template-columns: 1fr; }
+.detail-karte:has(.kartenhand) > img { display: none; }
+.kartenhand { display: flex; justify-content: center; align-items: flex-start; margin: 10px 0 2px; }
+.kartenhand img {
+  width: 150px; height: auto; border-radius: 12px;
+  border: 1px solid var(--linie); background: var(--nacht);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+  transition: transform 0.25s ease; transform-origin: bottom center;
+}
+.kartenhand img:first-child { transform: rotate(-7deg); margin-right: -26px; }
+.kartenhand img:last-child { transform: rotate(7deg); margin-top: 16px; margin-left: -26px; z-index: 2; }
+.kartenhand:hover img:first-child { transform: rotate(-13deg) translateX(-10px); }
+.kartenhand:hover img:last-child { transform: rotate(13deg) translateX(10px); }
+
+/* Dreispaltige Schritt-Karten (Unterseiten) */
+.schritte.dreier { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) { .schritte.dreier { grid-template-columns: 1fr; } }
+
+/* Fuß */
+footer {
+  border-top: 1px solid var(--linie); padding: 36px 0 48px;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap;
+}
+footer .klein { font-size: 13px; color: var(--text-dim); }
+footer nav { display: flex; gap: 20px; flex-wrap: wrap; }
+footer a { color: var(--text-mid); text-decoration: none; font-size: 13.5px; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 860px) {
+  /* Kopfleiste klebt oben — Menü-Button von überall erreichbar */
+  header {
+    position: sticky; top: 0; z-index: 90;
+    margin: 0 -24px; padding: 12px 24px;
+    background: var(--nacht); border-bottom: 1px solid var(--linie);
+  }
+  /* Login-Knopf kompakt: nur das Icon, spart Platz im Handy-Header */
+  .login-knopf { padding: 7px 9px; }
+  .login-knopf .lk-txt, .login-knopf.bald::after { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 40px; }
+  .schritte { grid-template-columns: 1fr 1fr; }
+  .merkmale { grid-template-columns: 1fr; }
+  .merkmal.breit { grid-column: span 1; grid-template-columns: 1fr; }
+  .stufen { grid-template-columns: 1fr 1fr; }
+  .meldung { grid-template-columns: 1fr; gap: 4px; }
+  .melde-karten { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .schritte, .stufen { grid-template-columns: 1fr; }
+  .kopf-links { gap: 14px; }
+  .kopf-links a { font-size: 13.5px; }
+}

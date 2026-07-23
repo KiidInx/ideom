@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — IDEom</title>
+<meta name="description" content="Häufige Fragen zu IDEom: Brauche ich einen eigenen KI-Schlüssel? Geht es kostenlos? Läuft es offline? Welche Android-Version? Bleibt mein Code privat?">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="marke" href="index.html"><span class="ide">IDE</span>om</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="beta-pille">ALPHA</span>
+      <div class="tab-nav" id="tabNav"></div>
+    </div>
+  </header>
+
+  <div class="seiten-kopf">
+    <div class="s-eyebrow">FAQ</div>
+    <h1>Häufige Fragen — ehrlich beantwortet.</h1>
+    <p class="s-intro" style="margin-top: 18px;">
+      Deine Frage fehlt? <a href="https://github.com/KiidInx/ideom-mobile/discussions" style="color: var(--gold);">Frag
+      in den Discussions</a> — was öfter kommt, landet hier.
+    </p>
+  </div>
+
+  <section class="ohne-linie" style="padding-top: 24px;">
+    <div class="faq">
+      <input type="text" id="faqSuche" class="faq-suche" placeholder="FAQ durchsuchen …" aria-label="FAQ durchsuchen">
+
+      <div class="faq-gruppe">
+        <div class="faq-gruppe-titel">Loslegen &amp; Kosten</div>
+
+        <details>
+          <summary>Brauche ich einen eigenen KI-Schlüssel?</summary>
+          <p>Du brauchst einen eigenen Zugang zu einem KI-Anbieter — aber
+          das klingt komplizierter, als es ist. Bei mehreren Anbietern
+          meldest du dich einfach per Login an (z.&nbsp;B. OpenRouter oder
+          GitHub), ganz ohne Schlüssel-Kopieren. IDEom führt dich beim
+          ersten Start durch die Einrichtung.</p>
+          <p>Warum überhaupt eigener Zugang? Weil so <em>du</em> die
+          Kontrolle hast: dein Tarif, dein Anbieter, deine Daten — und
+          IDEom muss deine Nutzung weder begrenzen noch quersubventionieren.</p>
+        </details>
+
+        <details>
+          <summary>Kann ich IDEom komplett kostenlos nutzen?</summary>
+          <p>Ja. Die Free-Stufe von IDEom kann alles Wesentliche — und es
+          gibt KI-Anbieter mit großzügigen Gratis-Kontingenten, die IDEom
+          dir direkt vorschlägt. Damit baust du echte Apps, ohne einen
+          Cent auszugeben.</p>
+          <p>Ehrlicher Hinweis: Manche Gratis-Anbieter trainieren mit
+          deinen Anfragen. IDEom zeigt dir das bei der Auswahl offen an,
+          damit du mit offenen Karten entscheidest.</p>
+        </details>
+
+        <details>
+          <summary>Funktioniert IDEom offline — zum Beispiel mit Ollama?</summary>
+          <p>Der Editor, das Bauen und Installieren funktionieren komplett
+          offline — die Bau-Kette läuft ja auf deinem Gerät. Nur der
+          KI-Agent braucht eine Verbindung zu einem Modell.</p>
+          <p>Du kannst dafür auch ein lokales Modell nehmen: Läuft bei dir
+          Ollama (etwa auf einem PC im Heimnetz), trägst du dessen Adresse
+          als eigenen Endpunkt ein — dann verlässt keine einzige Anfrage
+          dein Netzwerk.</p>
+        </details>
+
+        <details>
+          <summary>Welche Android-Version brauche ich?</summary>
+          <p>IDEom ist für aktuelle Android-Geräte gebaut und wird auf
+          echter Alltags-Hardware getestet — keinem Über-Gerät. Die genaue
+          Mindestversion nageln wir zum offenen Test fest und schreiben
+          sie dann hier und auf der Download-Seite hin.</p>
+        </details>
+      </div>
+
+      <div class="faq-gruppe">
+        <div class="faq-gruppe-titel">Deine Daten &amp; Kontrolle</div>
+
+        <details>
+          <summary>Bleibt mein Code privat?</summary>
+          <p>Ja. Deine Projekte liegen auf deinem Gerät, nicht auf unseren
+          Servern. Wenn du mit dem Agenten arbeitest, gehen die betroffenen
+          Dateien direkt an den KI-Anbieter, den du gewählt hast — nie an
+          uns. Optionale Cloud-Backups sind
+          <a href="sicherheit.html">Ende-zu-Ende verschlüsselt</a>, bevor
+          sie dein Gerät verlassen; wir können sie nicht öffnen.</p>
+        </details>
+
+        <details>
+          <summary>Kann die KI mein Projekt kaputt machen?</summary>
+          <p>Sie kann Fehler machen — jede KI kann das. Aber kaputt im
+          Sinne von „unwiederbringlich" geht bei IDEom nicht: Erstens
+          siehst du jede Änderung vorher als Diff und musst zustimmen.
+          Zweitens sichert das Snapshot-Netz vor jeder Änderung den
+          Projektstand — ein Tipp, und du bist zurück auf einem
+          funktionierenden Stand.</p>
+        </details>
+      </div>
+
+      <div class="faq-gruppe">
+        <div class="faq-gruppe-titel">Apps &amp; Ausblick</div>
+
+        <details>
+          <summary>Was unterscheidet IDEom von ChatGPT &amp; Co.?</summary>
+          <p>Ein Chatbot gibt dir Code als Text — und dann? Du hast auf
+          dem Handy nichts, womit du ihn bauen oder ausführen könntest.
+          IDEom schließt genau diese Lücke: Es ist eine echte
+          Entwicklungsumgebung mit Editor, Projektverwaltung und
+          Bau-Kette. Der Agent schreibt nicht nur Code, er arbeitet in
+          deinem Projekt, baut die App, liest Compiler-Fehler und
+          repariert sie — bis etwas Installierbares dasteht.</p>
+        </details>
+
+        <details>
+          <summary>Kann ich meine Apps veröffentlichen?</summary>
+          <p>Die Apps, die IDEom baut, sind echte, signierte APKs — sie
+          gehören dir. Du kannst sie teilen und installieren, wo du
+          willst. Für eine Veröffentlichung im Play Store gelten Googles
+          übliche Anforderungen (Entwicklerkonto, Richtlinien) — das
+          liegt außerhalb von IDEom, ist aber mit den gebauten Apps
+          grundsätzlich möglich. Für später ist ein eigener Weg geplant,
+          IDEom-Apps direkt an andere weiterzugeben.</p>
+        </details>
+
+        <details>
+          <summary>Wann kommt IDEom in den Play Store?</summary>
+          <p>Nach der offenen Alpha. Erst soll IDEom sich im Alltag beweisen
+          und Feedback einsammeln — dann kommt der Store-Start mit den
+          Abo-Stufen. Den ehrlichen Stand siehst du jederzeit im
+          <a href="fahrplan.html">Fahrplan</a> und in den
+          <a href="index.html#news">Werkstatt-Meldungen</a>.</p>
+        </details>
+
+        <details>
+          <summary>Wie melde ich Fehler, Wünsche oder Fragen?</summary>
+          <p><b>Fehler</b> meldest du am schnellsten über die
+          <a href="mitmachen.html">Fehler-melden-Seite</a> — ein Klick öffnet
+          eine vorbereitete Meldung auf GitHub, ohne weitere Anmeldung.</p>
+          <p><b>Wünsche, Ideen und Fragen</b> gehören in die
+          <a href="https://github.com/KiidInx/ideom-mobile/discussions">GitHub&nbsp;Discussions</a>
+          — dafür meldest du dich einmal mit deinem GitHub-Konto an. Eine eigene
+          Community mit IDEom-Profil kommt später. Was daraus wird, siehst du in
+          den <a href="index.html#news">Werkstatt-Meldungen</a>.</p>
+        </details>
+      </div>
+
+      <p id="faqLeer" class="faq-leer">Keine Frage passt zu deiner Suche.
+        <a href="https://github.com/KiidInx/ideom-mobile/discussions" style="color: var(--gold);">Frag
+        in den Discussions</a> — was öfter kommt, landet hier.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Noch offen?</div>
+    <h2>Frage nicht dabei?</h2>
+    <p class="s-intro">
+      Stell sie in den Discussions — dort wird sie gelesen, und was öfter
+      kommt, landet hier.
+    </p>
+    <p style="margin-top: 24px;">
+      <a class="knopf knopf-gold" href="https://github.com/KiidInx/ideom-mobile/discussions">Frage stellen · Discussions</a>
+    </p>
+  </section>
+
+  <footer>
+    <div class="klein">© 2026 IDEom · Patrick-Michell Rohleder</div>
+    <nav>
+      <a href="mitmachen.html">Fehler melden</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+</div>
+
+<script src="nav.js"></script>
+<script>
+  // Leichter FAQ-Filter: tippt man, bleiben nur passende Fragen (Titel +
+  // Antwort) sichtbar; leere Gruppen verschwinden. Skaliert mit, wenn die
+  // FAQ wächst — Treffer klappen automatisch auf.
+  (function () {
+    var suche = document.getElementById('faqSuche');
+    if (!suche) return;
+    var gruppen = document.querySelectorAll('.faq-gruppe');
+    var leer = document.getElementById('faqLeer');
+    suche.addEventListener('input', function () {
+      var q = suche.value.trim().toLowerCase();
+      var gesamt = 0;
+      gruppen.forEach(function (g) {
+        var n = 0;
+        g.querySelectorAll('details').forEach(function (d) {
+          var treffer = q === '' || d.textContent.toLowerCase().indexOf(q) !== -1;
+          d.style.display = treffer ? '' : 'none';
+          d.open = (q !== '' && treffer);
+          if (treffer) n++;
+        });
+        g.style.display = n ? '' : 'none';
+        gesamt += n;
+      });
+      if (leer) leer.style.display = (gesamt === 0) ? 'block' : 'none';
+    });
+  })();
+</script>
+</body>
+</html>

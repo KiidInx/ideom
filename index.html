@@ -3,214 +3,146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flux Studio — Die App, die Apps baut</title>
-<meta name="description" content="Flux Studio: Beschreibe deine Idee, der KI-Agent schreibt den Code, dein Handy baut die App. Komplett auf dem Gerät. Kostenfrei, solange Flux in Entwicklung ist.">
-<style>
-  :root {
-    --bg: #0a0a08;
-    --surface: #171715;
-    --border: #2e2e2a;
-    --flux: #e8d5a3;
-    --flux2: #c4a96d;
-    --teal: #5ecfb8;
-    --text: #e8e6e0;
-    --text-mid: #9a9a92;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: Georgia, serif;
-    line-height: 1.7;
-  }
-  .hülle { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-
-  header { padding: 72px 0 56px; text-align: center; }
-  .marke {
-    font-family: monospace;
-    font-size: 12px;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--flux2);
-    margin-bottom: 20px;
-  }
-  h1 { font-size: 40px; line-height: 1.15; color: #fff; margin-bottom: 16px; }
-  .untertitel { font-size: 18px; color: var(--text-mid); max-width: 540px; margin: 0 auto 28px; }
-  .frei {
-    display: inline-block;
-    font-family: monospace;
-    font-size: 13px;
-    color: var(--flux);
-    border: 1px solid rgba(232,213,163,0.35);
-    background: rgba(232,213,163,0.06);
-    border-radius: 999px;
-    padding: 8px 20px;
-  }
-
-  .kette {
-    font-family: monospace;
-    font-size: 13px;
-    color: var(--teal);
-    text-align: center;
-    padding: 14px 8px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    margin: 0 0 56px;
-  }
-
-  h2 {
-    font-size: 20px;
-    color: var(--flux);
-    margin: 0 0 18px;
-  }
-  section { margin-bottom: 56px; }
-  .merkmale { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  @media (max-width: 560px) { .merkmale { grid-template-columns: 1fr; } }
-  .karte {
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 18px;
-  }
-  .karte h3 { font-size: 16px; color: var(--text); margin-bottom: 6px; }
-  .karte p { font-size: 14px; color: var(--text-mid); }
-
-  .callout {
-    border: 1px solid rgba(232,213,163,0.2);
-    border-left: 3px solid var(--flux);
-    background: rgba(232,213,163,0.04);
-    padding: 14px 16px;
-    font-size: 14px;
-    color: var(--text-mid);
-  }
-  .callout strong { color: var(--flux); }
-
-  .news-karte {
-    display: block;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    border-radius: 14px;
-    padding: 18px;
-    margin-bottom: 14px;
-    text-decoration: none;
-    transition: border-color .15s;
-  }
-  .news-karte:hover { border-color: var(--flux2); }
-  .news-kopf {
-    font-family: monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--flux2);
-    margin-bottom: 8px;
-  }
-  .news-karte h3 { font-size: 17px; color: var(--text); margin-bottom: 6px; }
-  .news-karte p { font-size: 14px; color: var(--text-mid); }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 28px 0 48px;
-    text-align: center;
-    font-family: monospace;
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-mid);
-  }
-  footer a { color: var(--text-mid); }
-  footer a:hover { color: var(--flux); }
-</style>
+<title>IDEom — Die IDE in deiner Hosentasche</title>
+<meta name="description" content="Beschreib deine App-Idee. IDEom schreibt den Code, du prüfst jede Änderung — und am Ende liegt eine echte Android-App auf deinem Homescreen. Ohne Laptop, ohne Werbung.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="stil.css">
 </head>
 <body>
-  <div class="hülle">
-    <header>
-      <div class="marke">Flux Studio</div>
-      <h1>Die App,<br>die Apps baut.</h1>
-      <p class="untertitel">Beschreibe deine Idee. Der KI-Agent schreibt den
-      Code. Dein Handy kompiliert, packt, signiert und installiert die
-      fertige App — alles auf dem Gerät.</p>
-      <div class="frei">Kostenfrei, solange Flux in Entwicklung ist</div>
-    </header>
 
-    <div class="kette">
-      Idee &nbsp;→&nbsp; Code &nbsp;→&nbsp; Kompilieren &nbsp;→&nbsp;
-      Packen &nbsp;→&nbsp; Signieren &nbsp;→&nbsp; App
+<div class="wrap">
+  <header>
+    <a class="marke" href="index.html"><span class="ide">IDE</span>om</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="beta-pille">ALPHA</span>
+      <div class="tab-nav" id="tabNav"></div>
+    </div>
+  </header>
+
+  <!-- ==================== OBEN: DOWNLOAD ==================== -->
+  <div class="hero" id="download">
+    <div>
+      <div class="hero-eyebrow">Android-IDE mit KI-Agent · Alpha</div>
+      <h1>Die IDE in deiner Hosentasche — mit einer KI, die <em>wirklich baut.</em></h1>
+      <p class="hero-sub">
+        Beschreib deine App-Idee. IDEom schreibt den Code, du prüfst und
+        bestätigst jede Änderung — und am Ende landet eine echte,
+        installierbare Android-App auf deinem Homescreen. Kein Laptop,
+        kein Setup, keine Werbung.
+      </p>
+      <div class="hero-cta">
+        <a class="knopf knopf-gold" href="https://github.com/KiidInx/ideom-mobile/releases/latest/download/IDEom-Alpha.apk">APK herunterladen · Alpha</a>
+        <a class="knopf knopf-leise" href="stufen.html">Bald im Play Store</a>
+      </div>
+      <p class="hero-note"><b>Kostenlos</b> mit deinem eigenen <span class="begriff" tabindex="0">KI-Schlüssel<span class="tip">Dein persönlicher Zugang zu einem KI-Anbieter — bei mehreren Anbietern komplett kostenlos. IDEom führt dich beim ersten Start durch die Einrichtung; bequeme Anmeldung per Login geht auch.</span></span> — jedes Modell, dein Tarif, deine Kontrolle.</p>
     </div>
 
-    <section>
-      <h2>Was Flux kann</h2>
-      <div class="merkmale">
-        <div class="karte">
-          <h3>App-Fabrik in der Hosentasche</h3>
-          <p>Vom Satz zur installierten App, komplett auf dem Handy.
-          Kein PC, keine Cloud-Pflicht, kein Umweg.</p>
-        </div>
-        <div class="karte">
-          <h3>Dein Agent, deine Modelle</h3>
-          <p>Kuratierte KI-Modelle vieler Anbieter — wähle aus der Liste
-          oder bring deinen eigenen Schlüssel mit.</p>
-        </div>
-        <div class="karte">
-          <h3>Bleibt kühl</h3>
-          <p>Flux misst die Temperatur und regelt die Baugeschwindigkeit
-          selbst: Kühl, Ausgewogen oder Schnell — du entscheidest.</p>
-        </div>
-        <div class="karte">
-          <h3>Deine Daten gehören dir</h3>
-          <p>Projekte bleiben auf dem Gerät. Das Cloud-Backup ist
-          Ende-zu-Ende verschlüsselt — wir können es nicht lesen.</p>
-        </div>
+    <div class="handy" aria-label="Beispiel eines Agent-Gesprächs in IDEom">
+      <div class="handy-kerbe"></div>
+      <div class="chat">
+        <div class="blase blase-nutzer">Bau mir eine Notizen-App im Dark-Design</div>
+        <div class="blase blase-agent">Gern — ich lege eine Compose-App mit Notizliste und Speichern an.</div>
+        <div class="werkzeug">🔧 bereitet Änderung an src/MainActivity.kt vor</div>
+        <div class="diff"><span class="kopf">src/MainActivity.kt</span><br>
+<span class="plus">+ class MainActivity : ComponentActivity() {</span><br>
+<span class="plus">+&nbsp;&nbsp;setContent { NotizenListe() }</span><br>
+<span class="plus">+ }</span></div>
+        <div class="diff-aktion"><span class="annehmen">✓ Annehmen</span></div>
+        <div class="werkzeug">🔧 baut die APK …</div>
+        <div class="install">✓ Notizen-App installiert</div>
       </div>
-    </section>
-
-    <section>
-      <div class="callout">
-        <strong>Ehrlich gesagt:</strong> Flux ist in Entwicklung. Manches
-        ist noch im Bau, Grenzen sagen wir offen — hier und in der App,
-        statt sie zu verstecken.
-      </div>
-    </section>
-
-    <section>
-      <h2>Werkstatt-Meldungen</h2>
-      <div id="news">Lade Meldungen …</div>
-    </section>
-
-    <footer>
-      <a href="impressum.html">Impressum</a>
-    </footer>
+    </div>
   </div>
 
-  <script>
-    // Dieselbe Quelle wie die App: news/index.json.
-    const typNamen = {
-      UPDATE: "Update", COMMUNITY: "Community",
-      MODELL: "Modell-Spotlight", ROADMAP: "Roadmap",
-    };
-    fetch("news/index.json")
-      .then(a => a.json())
-      .then(daten => {
-        const ziel = document.getElementById("news");
-        ziel.innerHTML = "";
-        for (const m of daten.meldungen) {
-          const karte = document.createElement("a");
-          karte.className = "news-karte";
-          karte.href = m.dokument;
-          const kopf = document.createElement("div");
-          kopf.className = "news-kopf";
-          kopf.textContent = (typNamen[m.typ] || m.typ) + " · " + m.datum;
-          const titel = document.createElement("h3");
-          titel.textContent = m.titel;
-          const teaser = document.createElement("p");
-          teaser.textContent = m.teaser;
-          karte.append(kopf, titel, teaser);
-          ziel.appendChild(karte);
-        }
-      })
-      .catch(() => {
-        document.getElementById("news").textContent =
-          "Meldungen konnten nicht geladen werden.";
+  <!-- ==================== UNTEN: NEWS ALS KARTEN ==================== -->
+  <section id="news">
+    <div class="s-eyebrow">Werkstatt-Meldungen</div>
+    <h2>Was in der Werkstatt passiert — alles, offen.</h2>
+    <p class="s-intro">
+      IDEom wird offen gebaut: Jede größere Änderung landet hier als
+      Meldung — Fortschritte genauso wie Rückschläge. Dieselben Meldungen
+      liest auch die App. Tipp auf eine Karte, dann klappt die ganze
+      Meldung auf.
+    </p>
+    <div class="news-karten" id="newsKarten">
+      <noscript>
+        <p class="s-intro" style="margin-top: 24px;">Die Meldungen brauchen
+        JavaScript. Die einzelnen Meldungen liegen im Ordner
+        <a href="news/" style="color: var(--gold);">news/</a>.</p>
+      </noscript>
+    </div>
+  </section>
+
+  <footer>
+    <div class="klein">© 2026 IDEom · Patrick-Michell Rohleder</div>
+    <nav>
+      <a href="mitmachen.html">Fehler melden</a>
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </nav>
+  </footer>
+</div>
+
+<script>
+  // Werkstatt-Meldungen aus news/index.json — dieselbe Quelle liest auch
+  // die App. Jede Karte lädt ihre Meldung erst beim Aufklappen (spart Daten)
+  // und passt ihre Höhe an den Inhalt an.
+  fetch('news/index.json')
+    .then(function (a) { return a.json(); })
+    .then(function (daten) {
+      var ziel = document.getElementById('newsKarten');
+      (daten.meldungen || []).forEach(function (m) {
+        var karte = document.createElement('details');
+        karte.className = 'news-karte';
+
+        var kopf = document.createElement('summary');
+        var meta = document.createElement('span');
+        meta.className = 'nk-meta';
+        meta.textContent = m.datum + (m.typ ? ' · ' + m.typ : '');
+        var titel = document.createElement('span');
+        titel.className = 'nk-titel';
+        titel.textContent = m.titel;
+        var teaser = document.createElement('span');
+        teaser.className = 'nk-teaser';
+        teaser.textContent = m.teaser;
+        var pfeil = document.createElement('span');
+        pfeil.className = 'nk-pfeil';
+        pfeil.setAttribute('aria-hidden', 'true');
+        pfeil.textContent = '+';
+        kopf.appendChild(meta);
+        kopf.appendChild(titel);
+        kopf.appendChild(teaser);
+        kopf.appendChild(pfeil);
+
+        var inhalt = document.createElement('div');
+        inhalt.className = 'nk-inhalt';
+        var rahmen = document.createElement('iframe');
+        rahmen.setAttribute('loading', 'lazy');
+        rahmen.setAttribute('title', m.titel);
+        rahmen.addEventListener('load', function () {
+          try {
+            var h = rahmen.contentWindow.document.body.scrollHeight;
+            if (h) rahmen.style.height = (h + 8) + 'px';
+          } catch (e) {}
+        });
+        inhalt.appendChild(rahmen);
+
+        karte.appendChild(kopf);
+        karte.appendChild(inhalt);
+
+        // erst beim ersten Aufklappen laden
+        karte.addEventListener('toggle', function () {
+          if (karte.open && !rahmen.getAttribute('src')) {
+            rahmen.setAttribute('src', m.dokument);
+          }
+        });
+
+        ziel.appendChild(karte);
       });
-  </script>
+    })
+    .catch(function () {});
+</script>
+<script src="nav.js"></script>
+
 </body>
 </html>
