@@ -1,6 +1,7 @@
 {
   "versionCode": 3,
   "versionName": "0.2.2",
+  "minVersionCode": 3,
   "apkUrl": "https://github.com/KiidInx/ideom-mobile/releases/latest/download/IDEom-Alpha.apk",
-  "was": "TEST der Update-Prüfung 🙂\nWenn du das siehst, funktioniert der Checker. „Herunterladen\" öffnet den Direkt-Link; „Später\" schließt. Ich stell die Version danach wieder auf 0.2.1 zurück."
+  "was": "PFLICHT-TEST 🔒\nDas ist der Zwang-Dialog: kein „Später\", nicht wegklickbar, Zurück-Taste blockiert. So würde ein kritisches Sicherheits-Update aussehen. Ich stelle danach alles wieder auf 0.2.1 zurück."
 }
