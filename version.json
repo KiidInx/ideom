@@ -1,6 +1,6 @@
 {
-  "versionCode": 2,
-  "versionName": "0.2.1",
+  "versionCode": 3,
+  "versionName": "0.2.2",
   "apkUrl": "https://github.com/KiidInx/ideom-mobile/releases/latest/download/IDEom-Alpha.apk",
-  "was": "Neu in 0.2.1:\n• Eigenes App-Symbol\n• Natürlicherer KI-Assistent, der seine Werkzeuge kennt\n• Automatische Update-Prüfung beim Start\n• Build-Knopf im Chat statt automatischem Sprung\n• Live-News direkt von der Website"
+  "was": "TEST der Update-Prüfung 🙂\nWenn du das siehst, funktioniert der Checker. „Herunterladen\" öffnet den Direkt-Link; „Später\" schließt. Ich stell die Version danach wieder auf 0.2.1 zurück."
 }
