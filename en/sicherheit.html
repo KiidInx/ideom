@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security — IDEom</title>
+<meta name="description" content="Zero-knowledge backups, the snapshot net, no ads, no tracking, model-open: how IDEom handles your code and your data.">
+<link rel="alternate" hreflang="de" href="https://kiidinx.github.io/ideom/sicherheit.html">
+<link rel="alternate" hreflang="en" href="https://kiidinx.github.io/ideom/en/sicherheit.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="../stil.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="marke" href="index.html"><span class="ide">IDE</span>om</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="beta-pille">ALPHA</span>
+      <div class="tab-nav" id="tabNav"></div>
+    </div>
+  </header>
+
+  <div class="seiten-kopf">
+    <div class="s-eyebrow">Security</div>
+    <h1>Your code. Your device. Your keys.</h1>
+    <p class="s-intro" style="margin-top: 18px;">
+      IDEom is built so that you don't have to trust anyone — us included.
+      Projects stay local, backups are encrypted before they leave the
+      device, and what the AI changes is up to you.
+    </p>
+  </div>
+
+  <section>
+    <div class="s-eyebrow">Your data</div>
+    <h2>What's yours stays with you.</h2>
+    <div class="merkmale">
+      <div class="merkmal">
+        <h3>Zero-knowledge backup</h3>
+        <p>Cloud backups are encrypted on your device with AES-256 before
+        they're uploaded. Only you know the passphrase — we cannot open
+        your backups. Genuinely cannot: it's technically impossible, not
+        just promised.</p>
+        <p style="margin-top: 10px; color: var(--text-dim); font-size: 13.5px;">
+        The flip side, honestly: lose the passphrase and <b>nobody</b>
+        gets into that backup again — us included. That's the price of
+        real zero-knowledge, not an oversight.</p>
+      </div>
+      <div class="merkmal">
+        <h3>Keys stay local</h3>
+        <p>Your AI key and your provider tokens are stored on your device
+        only. Provider sign-ins happen in the browser, directly with the
+        provider — IDEom never sees your password.</p>
+      </div>
+      <div class="merkmal">
+        <h3>No ads. No tracking.</h3>
+        <p>No advertising, no analytics services, no data collection —
+        neither in the app nor on this website. IDEom is funded by fair
+        plans, not by your data.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Your control</div>
+    <h2>Nothing happens without your yes.</h2>
+    <div class="merkmale">
+      <div class="merkmal">
+        <h3>Diff before writing</h3>
+        <p>The AI never writes into your project unasked. You see every
+        change as a diff first and decide yourself — accept or reject. No
+        black box, no "trust me".</p>
+      </div>
+      <div class="merkmal">
+        <h3>Snapshot net</h3>
+        <p>Before every accepted change, IDEom saves the project state.
+        Whatever the AI or you get up to — one tap and you're back on a
+        working state. Experimenting without fear.</p>
+      </div>
+      <div class="merkmal">
+        <h3>Honest warnings</h3>
+        <p>Some free providers train on your requests. IDEom doesn't bury
+        that in the fine print — it tells you right at the selection, so
+        you decide with the cards on the table.</p>
+      </div>
+      <div class="merkmal breit">
+        <div>
+          <h3>Model-open — you choose who reads along</h3>
+          <p>IDEom doesn't tie you to any AI provider. You connect the
+          provider of your choice — by key or by sign-in — and can switch
+          at any time. Your chat messages and the project files involved
+          go directly to that provider, never through our servers.</p>
+        </div>
+        <div class="modelle">
+          <span class="modell-chip">Mistral</span>
+          <span class="modell-chip">Cerebras</span>
+          <span class="modell-chip">GitHub Models</span>
+          <span class="modell-chip">OpenRouter</span>
+          <span class="modell-chip">Hugging Face</span>
+          <span class="modell-chip">Groq</span>
+          <span class="modell-chip">Ollama (local)</span>
+          <span class="modell-chip">+ custom endpoint</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="klein">© 2026 IDEom · Patrick-Michell Rohleder</div>
+    <nav>
+      <a href="mitmachen.html">Report a bug</a>
+      <a href="../impressum.html">Imprint (DE)</a>
+      <a href="../datenschutz.html">Privacy (DE)</a>
+    </nav>
+  </footer>
+</div>
+
+<script src="../nav.js"></script>
+</body>
+</html>

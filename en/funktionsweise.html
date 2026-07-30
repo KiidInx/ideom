@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How it works — IDEom</title>
+<meta name="description" content="How IDEom turns a sentence into an installed Android app: the diff flow, building on the device, self-repair and the snapshot net — step by step.">
+<link rel="alternate" hreflang="de" href="https://kiidinx.github.io/ideom/funktionsweise.html">
+<link rel="alternate" hreflang="en" href="https://kiidinx.github.io/ideom/en/funktionsweise.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="../stil.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <a class="marke" href="index.html"><span class="ide">IDE</span>om</a>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <span class="beta-pille">ALPHA</span>
+      <div class="tab-nav" id="tabNav"></div>
+    </div>
+  </header>
+
+  <div class="seiten-kopf">
+    <div class="s-eyebrow">How it works</div>
+    <h1>From a sentence to an app — the whole path, honestly explained.</h1>
+    <p class="s-intro" style="margin-top: 18px;">
+      Plenty of AI tools hand you code and leave you with it. IDEom walks
+      the path to the end: the code gets written, reviewed by you, built on
+      your device and installed. Here's what actually happens along the way.
+    </p>
+  </div>
+
+  <section>
+    <div class="s-eyebrow">Step 1 · Describe</div>
+    <h2>You talk, the agent understands the project.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="../bilder/shot-agent.png" alt="IDEom screenshot: the agent chat fixing a compile error">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>The agent chat</h3>
+        <p>Pull out for more</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>The agent chat</h3>
+        <p>This is where you talk to your AI partner. The agent has real
+        tools: it can read files in your project, search them and prepare
+        changes — it doesn't guess, it looks.</p>
+        <p>Every tool use is logged visibly in the chat. You always see
+        what the agent is doing and why.</p>
+      </div>
+    </div>
+    <p class="s-intro">
+      You describe in plain language what your app should do — "build me a
+      shopping list app with categories". The agent looks at your project
+      before it starts: it can read and search files instead of guessing.
+      For a new project it sets up the basic structure itself.
+    </p>
+    <p class="s-intro">
+      Which AI model does the thinking is up to you: IDEom is model-open.
+      You connect your own access — including providers that are completely
+      free.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Step 2 · Review — the diff flow</div>
+    <h2>Nothing gets written without your yes.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="../bilder/shot-diff.png" alt="IDEom screenshot: the diff view with accept/reject">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>The diff view</h3>
+        <p>Pull out for more</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>The diff view</h3>
+        <p>Green is what's being added. Red is what's going away. Plus the
+        file and the exact spot — that's all it takes to show a change
+        honestly.</p>
+        <p>Below every diff sit two buttons: accept and reject. Only your
+        acceptance actually writes the change into your project — and
+        IDEom takes a snapshot first, automatically.</p>
+      </div>
+    </div>
+    <p class="s-intro">
+      Before the agent writes a single line into your project, IDEom shows
+      you the change as a <b>diff</b>: what's added (green), what's removed
+      (red), in which file, at which spot. You read, you decide —
+      <b>accept</b> or <b>reject</b>.
+    </p>
+    <p class="s-intro">
+      This isn't a formality, it's the heart of IDEom: it stays
+      <em>your</em> project. You learn along the way what your code looks
+      like and what's changing — instead of trusting a black box that does
+      something.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Step 3 · Build &amp; install</div>
+    <h2>Your phone compiles — and installs. Really.</h2>
+    <div class="tasche rechts">
+      <div class="tasche-bild">
+        <img src="../bilder/shot-bau.png" alt="IDEom screenshot: the build chain in the terminal (compile, dex, package, sign)">
+      </div>
+      <div class="tasche-front">
+        <div class="wisch" aria-hidden="true">👆</div>
+        <h3>Build &amp; installation</h3>
+        <p>Pull out for more</p>
+      </div>
+      <div class="tasche-detail">
+        <h3>Build &amp; installation</h3>
+        <p>The Kotlin compiler runs directly on your phone and turns your
+        source code into a real, signed APK — compile, dex, package, sign.
+        IDEom keeps an eye on the temperature while it works (Cool /
+        Balanced / Fast).</p>
+        <p>And it's one flow: if the build goes through cleanly, the
+        ordinary Android install dialog opens right away. One tap on
+        "Update" and your new build is on the home screen — no detour
+        through a store, no PC.</p>
+        <div class="kartenhand">
+          <img src="../bilder/shot-bau.png" alt="The build chain in the terminal">
+          <img src="../bilder/shot-install.png" alt="The Android install dialog">
+        </div>
+      </div>
+    </div>
+    <p class="s-intro">
+      IDEom brings a real build chain with it: your Kotlin source becomes
+      an installable APK right on the phone — no laptop, no forced cloud.
+      What used to need a development environment on a PC now happens in
+      your pocket.
+    </p>
+    <div class="schritte dreier">
+      <div class="schritt">
+        <div class="schritt-num">COMPILE</div>
+        <h3>Source → bytecode</h3>
+        <p>The Kotlin compiler translates your files directly on the device.</p>
+      </div>
+      <div class="schritt">
+        <div class="schritt-num">PACKAGE</div>
+        <h3>Bytecode → APK</h3>
+        <p>Resources, code and manifest are packed into a real Android app and signed.</p>
+      </div>
+      <div class="schritt">
+        <div class="schritt-num">PROTECT</div>
+        <h3>Heat in view</h3>
+        <p>IDEom adjusts the build pace to keep your phone cool — from "Cool" to "Fast", your choice.</p>
+      </div>
+    </div>
+
+    <p class="s-intro" style="margin-top: 28px;">
+      And it doesn't stop at the finished file: if the build goes through
+      cleanly, IDEom opens the ordinary Android install dialog —
+      <b>building and installing are one flow</b>. You confirm, and your
+      app sits on the home screen like any other. No detour through a
+      store, no transfer to a PC.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">Self-repair</div>
+    <h2>When the compiler complains, the AI reads along.</h2>
+    <p class="s-intro">
+      Everyone who codes knows it: the first build attempt fails. In IDEom
+      that isn't a dead end but part of the loop — the compiler's error
+      messages go straight back to the agent. It reads them, works out what
+      went wrong and proposes the fix — again as a diff, again with your
+      yes.
+    </p>
+    <p class="s-intro">
+      That loop runs until the app builds cleanly. In testing, a model
+      found and repaired its own compile error without a human ever having
+      to understand the error. That's what separates a workshop from a
+      chatbot.
+    </p>
+  </section>
+
+  <section>
+    <div class="s-eyebrow">The safety net</div>
+    <h2>The snapshot net: every state comes back.</h2>
+    <p class="s-intro">
+      Before every accepted change, IDEom saves the state of your project
+      as a <b>snapshot</b>. If the AI (or you) made things worse, one tap
+      takes you back to an earlier state — nothing is ever permanently
+      broken.
+    </p>
+    <p class="s-intro">
+      That takes the fear out of experimenting: you can let the agent try
+      things boldly, because the way back is always open. More on that
+      under <a href="sicherheit.html" style="color: var(--gold);">Security</a>.
+    </p>
+  </section>
+
+  <footer>
+    <div class="klein">© 2026 IDEom · Patrick-Michell Rohleder</div>
+    <nav>
+      <a href="mitmachen.html">Report a bug</a>
+      <a href="../impressum.html">Imprint (DE)</a>
+      <a href="../datenschutz.html">Privacy (DE)</a>
+    </nav>
+  </footer>
+</div>
+
+<script src="../tasche.js"></script>
+<script src="../nav.js"></script>
+
+</body>
+</html>

@@ -8,23 +8,59 @@
      <script src="nav.js"></script>            (vor </body>)
 */
 (function () {
+  // Sprache steckt im Pfad: /en/ ist die englische Fassung. Die Dateinamen
+  // bleiben in beiden Sprachen gleich (auch die deutschen) — dadurch
+  // stimmen alle relativen Links von allein, und der Umschalter muss nur
+  // das /en/ an- oder abhängen. Ein zweiter Satz Dateinamen wäre ein
+  // zweiter Satz Fehlerquellen.
+  var EN = /\/en\//.test(location.pathname);
+  function t(de, en) { return EN ? en : de; }
+
   var TABS = [
-    { icon: '⚡', name: 'Start', href: 'index.html', kinder: [
+    { icon: '⚡', name: t('Start', 'Home'), href: 'index.html', kinder: [
       { name: 'Download', href: 'index.html#download' },
       { name: 'News', href: 'index.html#news' }
     ] },
-    { icon: '🧭', name: 'Entdecken', kinder: [
-      { name: "So funktioniert's", href: 'funktionsweise.html' },
-      { name: 'Sicherheit', href: 'sicherheit.html' },
-      { name: 'Stufen', href: 'stufen.html' },
+    { icon: '🧭', name: t('Entdecken', 'Explore'), kinder: [
+      { name: t("So funktioniert's", 'How it works'), href: 'funktionsweise.html' },
+      { name: t('Sicherheit', 'Security'), href: 'sicherheit.html' },
+      { name: t('Stufen', 'Plans'), href: 'stufen.html' },
       { name: 'FAQ', href: 'faq.html' }
     ] },
-    { icon: '✊', name: 'Manifest', href: 'manifest.html' },
-    { icon: '🗺️', name: 'Fahrplan', href: 'fahrplan.html' }
+    { icon: '✊', name: t('Manifest', 'Manifesto'), href: 'manifest.html' },
+    { icon: '🗺️', name: t('Fahrplan', 'Roadmap'), href: 'fahrplan.html' }
+  ];
+
+  // Nur diese Seiten gibt es zweisprachig. Impressum und Datenschutz
+  // bleiben bewusst deutsch: das sind Rechtstexte nach deutschem Recht,
+  // und eine Übersetzung daneben wäre eine zweite Fassung, die im
+  // Zweifel nicht gilt.
+  var UEBERSETZT = [
+    'index.html', 'funktionsweise.html', 'sicherheit.html', 'stufen.html',
+    'faq.html', 'manifest.html', 'fahrplan.html', 'mitmachen.html'
   ];
 
   var pfad = location.pathname.split('/').pop() || 'index.html';
   if (pfad === '') pfad = 'index.html';
+
+  // --- Sprache beim ersten Besuch nach dem Browser richten -------------
+  // Zwei Bremsen, damit das nicht bevormundet:
+  //   1. Es passiert nur EINMAL. Wer den Umschalter benutzt, legt damit
+  //      fest, was er will — danach wird nie wieder umgeleitet, auch nicht
+  //      wenn Browsersprache und Wahl auseinandergehen. Eine getroffene
+  //      Entscheidung zu überstimmen ist schlimmer als gar keine Erkennung.
+  //   2. Umgeleitet wird nur von Deutsch NACH Englisch. Deutsch ist die
+  //      Originalfassung und immer vollständig; wer hier landet, versteht
+  //      im Zweifel beides. Umgekehrt jemanden aus /en/ herauszuwerfen,
+  //      weil sein Browser auf Deutsch steht, wäre der ärgerlichere Fehler.
+  var GEWAEHLT = 'ideom-sprache';
+  function merkeSprache(s) {
+    try { localStorage.setItem(GEWAEHLT, s); } catch (e) {}
+  }
+  function gemerkteSprache() {
+    try { return localStorage.getItem(GEWAEHLT); } catch (e) { return null; }
+  }
+
   function istAktiv(href) { return href && href.split('#')[0] === pfad; }
 
   // aktiven Haupttab bestimmen (Seite selbst ODER Elternteil eines Subtabs)
@@ -45,12 +81,12 @@
   trigger.className = 'tab-trigger';
   trigger.setAttribute('aria-haspopup', 'true');
   trigger.innerHTML = '<span class="tt-icon">☰</span><span class="tt-name"></span><span class="tt-pfeil">▾</span>';
-  trigger.querySelector('.tt-name').textContent = TABS[aktivM] ? TABS[aktivM].name : 'Menü';
+  trigger.querySelector('.tt-name').textContent = TABS[aktivM] ? TABS[aktivM].name : t('Menü', 'Menu');
 
   var flyout = document.createElement('div');
   flyout.className = 'tab-flyout';
   flyout.innerHTML =
-    '<div class="fly-titel">Wohin?</div>' +
+    '<div class="fly-titel">' + t('Wohin?', 'Where to?') + '</div>' +
     '<div class="fly-haupt"></div>' +
     '<div class="fly-subband leer"></div>';
   var flyHaupt = flyout.querySelector('.fly-haupt');
@@ -90,11 +126,44 @@
   halter.appendChild(trigger);
   halter.appendChild(flyout);
 
+  // Sprachumschalter: führt auf DIESELBE Seite in der anderen Sprache,
+  // nicht auf die Startseite. Wer mitten in der FAQ steht und umschaltet,
+  // will die FAQ auf Englisch — nicht von vorn anfangen.
+  if (UEBERSETZT.indexOf(pfad) !== -1) {
+    var sprache = document.createElement('a');
+    sprache.className = 'sprach-knopf';
+    sprache.href = (EN ? '../' : 'en/') + pfad;
+    sprache.setAttribute('hreflang', EN ? 'de' : 'en');
+    sprache.textContent = EN ? 'DE' : 'EN';
+    sprache.title = t('Switch to English', 'Auf Deutsch umschalten');
+    // Klick = bewusste Wahl. Ab jetzt entscheidet der Besucher, nicht
+    // mehr seine Browsereinstellung.
+    sprache.addEventListener('click', function () {
+      merkeSprache(EN ? 'de' : 'en');
+    });
+    if (halter.parentNode) halter.parentNode.insertBefore(sprache, halter);
+  }
+
+  // Automatische Weiche. `location.replace` statt `href`: die deutsche
+  // Seite soll nicht im Verlauf landen, sonst wirft der Zurück-Knopf den
+  // Besucher in eine Schleife.
+  if (!EN && UEBERSETZT.indexOf(pfad) !== -1 && !gemerkteSprache()) {
+    var browser = (navigator.language || '').toLowerCase();
+    if (browser && browser.indexOf('de') !== 0) {
+      merkeSprache('en');           // damit es genau einmal passiert
+      location.replace('en/' + pfad + location.hash);
+      return;
+    }
+  }
+
   // Login-Knopf: separat in der Kopfleiste, vorerst „bald" (Supabase folgt)
   var login = document.createElement('span');
   login.className = 'login-knopf bald';
   login.innerHTML = '<span class="lk-icon">👤</span><span class="lk-txt">Login</span>';
-  login.title = 'Bald — melde dich in IDEom an: Konto, Backups & Nachrichten';
+  login.title = t(
+    'Bald — melde dich in IDEom an: Konto, Backups & Nachrichten',
+    'Coming soon — sign in to IDEom: account, backups & messages'
+  );
   if (halter.parentNode) halter.parentNode.insertBefore(login, halter);
 
   // ---------- Handy: Kreuz-Navigator ----------
@@ -102,11 +171,11 @@
   overlay.className = 'drum-overlay';
   overlay.innerHTML =
     '<div class="drum-blatt" role="dialog" aria-label="Navigation">' +
-      '<div class="drum-titel">Wohin?</div>' +
+      '<div class="drum-titel">' + t('Wohin?', 'Where to?') + '</div>' +
       '<div class="hdrum-wrap"><div class="hdrum" id="hdrum"></div></div>' +
       '<div class="kreuz-punkte" id="punkte"></div>' +
       '<div class="vdrum-wrap leer" id="vwrap"><div class="vdrum-band"></div><div class="vdrum" id="vdrum"></div></div>' +
-      '<div class="drum-hint">Tippen zum Öffnen</div>' +
+      '<div class="drum-hint">' + t('Tippen zum Öffnen', 'Tap to open') + '</div>' +
       '<div class="drum-griff"></div>' +
     '</div>';
   var hdrum = overlay.querySelector('#hdrum');

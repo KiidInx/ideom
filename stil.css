@@ -149,6 +149,21 @@ header {
   border: 1px solid var(--linie); border-radius: 999px; padding: 1px 6px;
 }
 
+/* Sprachumschalter (DE/EN) — schmal und ruhig neben dem Login.
+   Zeigt die Sprache, in die man WECHSELT, nicht die aktuelle: ein Knopf
+   ist eine Handlung, keine Zustandsanzeige. */
+.sprach-knopf {
+  display: inline-flex; align-items: center;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+  color: var(--text-dim); text-decoration: none;
+  border: 1px solid var(--linie); border-radius: 999px;
+  padding: 6px 11px; white-space: nowrap;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.sprach-knopf:hover, .sprach-knopf:focus-visible {
+  color: var(--gold); border-color: var(--gold);
+}
+
 /* Handy: Drum-Picker (Wecker-Stil) */
 .drum-overlay {
   position: fixed; inset: 0; z-index: 120; background: rgba(0,0,0,0.6);
