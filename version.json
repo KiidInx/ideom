@@ -1,7 +1,7 @@
 {
-  "versionCode": 4,
-  "versionName": "0.2.3",
+  "versionCode": 5,
+  "versionName": "0.2.4",
   "minVersionCode": 0,
   "apkUrl": "https://github.com/KiidInx/ideom-mobile/releases/latest/download/IDEom-Alpha.apk",
-  "was": "Neu in 0.2.3:\n• Jeder Screen in derselben Kartenoptik, drei Reiter pro Tab\n• Karten drücken sich beim Antippen ein, Tabs blenden über\n• IDEom auf Deutsch und Englisch, umschaltbar ohne Neustart\n• Backups pro Projekt wählbar, jedes mit eigener Liste\n• Die Tastatur verdeckt keine Eingabefelder mehr"
+  "was": "Neu in 0.2.4:\n• OpenRouter verbinden mit einem Knopf — kein Schlüssel zum Kopieren\n• GitHub verbinden ist freigeschaltet\n• Modell-Liste kommt live vom Anbieter und veraltet nicht mehr\n• Auswahl nach Fähigkeit: Bilderkennung, Sprache, oder beides\n• Nur noch Modelle, mit denen der Agent wirklich arbeiten kann"
 }
