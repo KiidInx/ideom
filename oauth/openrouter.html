@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Zurück zu IDEom</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<link rel="stylesheet" href="../stil.css">
+<style>
+  /* Diese Seite hat bewusst keine Navigation und keinen Fuß: sie ist eine
+     Durchgangstür, kein Ziel. Wer hier landet, soll nach spätestens einer
+     Sekunde wieder in der App sein. */
+  .tuer {
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; text-align: center; padding: 24px;
+  }
+  .tuer h1 { font-size: clamp(24px, 5vw, 32px); margin-bottom: 12px; }
+  .tuer p { max-width: 30rem; margin: 0 auto; }
+  .tuer .knopf { margin-top: 28px; }
+  .leise { margin-top: 20px; font-size: 13px; color: var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div class="tuer">
+  <div>
+    <div class="s-eyebrow" id="augenbraue">OpenRouter</div>
+    <h1 id="titel">Verbunden</h1>
+    <p id="text">Du wirst zu IDEom zurückgeleitet …</p>
+    <a class="knopf knopf-gold" id="zurueck" href="#">Zurück zu IDEom</a>
+    <p class="leise" id="hinweis">
+      Passiert nichts? Dann tippe den Knopf — manche Browser springen erst
+      auf Fingertipp in eine App zurück.
+    </p>
+  </div>
+</div>
+
+<script>
+  // Rücksprung aus dem OpenRouter-Login.
+  //
+  // Warum diese Seite auf der WEBSITE liegt und nicht in einer Supabase
+  // Edge Function: OpenRouter akzeptiert als Rücksprung-Adresse nur
+  // localhost oder öffentliche https-URLs — ein flux://-Schema wird
+  // abgewiesen. Eine Edge Function wäre so eine https-Adresse gewesen,
+  // aber Supabase erzwingt dort `Content-Type: text/plain` samt `nosniff`
+  // (kein HTML auf der geteilten Domain, sonst wäre sie ein Phishing-Wirt).
+  // Der Browser zeigte deshalb den Quelltext statt der Seite. GitHub Pages
+  // liefert echtes HTML — und die Seite trägt ohnehin nichts Geheimes:
+  // der Einmal-Code ist ohne den PKCE-Verifier wertlos, und der verlässt
+  // das Gerät nie.
+  (function () {
+    var p = new URLSearchParams(location.search);
+    var code = p.get('code');
+    var fehler = p.get('error');
+
+    var ziel = 'flux://oauth/openrouter';
+    if (code) {
+      ziel += '?code=' + encodeURIComponent(code);
+    } else {
+      ziel += '?error=' + encodeURIComponent(fehler || 'kein_code');
+    }
+
+    document.getElementById('zurueck').href = ziel;
+
+    if (!code) {
+      document.getElementById('titel').textContent = 'Nicht verbunden';
+      document.getElementById('text').textContent =
+        fehler === 'access_denied'
+          ? 'Die Zustimmung wurde abgelehnt — es wurde nichts geändert.'
+          : 'Es kam kein Anmelde-Code zurück — es wurde nichts geändert.';
+    }
+
+    // Selbst versuchen; der Knopf bleibt als Rückfallebene stehen, falls
+    // der Browser den Schema-Sprung ohne Fingertipp verweigert (MIUI).
+    setTimeout(function () { location.replace(ziel); }, 150);
+  })();
+</script>
+
+</body>
+</html>
