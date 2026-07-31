@@ -2,6 +2,13 @@
   "meldungen": [
     {
       "datum": "2026-07-31",
+      "typ": "UPDATE",
+      "titel": "Ein Anbieter mehr — und ein Fehler weniger",
+      "teaser": "Xiaomi MiMo ist jetzt ein eigener Punkt in der Anbieterliste. Und Löschen heißt endlich Löschen — der alte Schlüssel blieb bisher unsichtbar liegen.",
+      "dokument": "news/2026-07-31-xiaomi-mimo.html"
+    },
+    {
+      "datum": "2026-07-31",
       "typ": "RELEASE",
       "titel": "IDEom bekommt einen Schreibtisch",
       "teaser": "IDEom Desktop 0.1.0 Alpha: der PC nimmt Bau-Anfragen vom Handy an und schickt die fertige App zurück — in Sekunden.",

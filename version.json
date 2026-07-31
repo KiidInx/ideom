@@ -1,7 +1,7 @@
 {
-  "versionCode": 5,
-  "versionName": "0.2.4",
+  "versionCode": 6,
+  "versionName": "0.2.4.1",
   "minVersionCode": 0,
   "apkUrl": "https://github.com/KiidInx/ideom-mobile/releases/latest/download/IDEom-Alpha.apk",
-  "was": "Neu in 0.2.4:\n• OpenRouter verbinden mit einem Knopf — kein Schlüssel zum Kopieren\n• GitHub verbinden ist freigeschaltet\n• Modell-Liste kommt live vom Anbieter und veraltet nicht mehr\n• Auswahl nach Fähigkeit: Bilderkennung, Sprache, oder beides\n• Nur noch Modelle, mit denen der Agent wirklich arbeiten kann"
+  "was": "Neu in 0.2.4.1:\n• Xiaomi MiMo als eigener Anbieter — mit Hinweis, welcher Schlüssel wohin gehört\n• Gelöschte Anbindungen sind jetzt wirklich weg (Schlüssel, Häkchen, aktiver Zustand)\n• Schlüsselfeld lässt sich leeren und zeigt, wenn ein gespeicherter Schlüssel drinsteht"
 }

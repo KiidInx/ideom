@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ein Anbieter mehr — und ein Fehler weniger</title>
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #171715;
+    --border: #2e2e2a;
+    --flux: #e8d5a3;
+    --flux2: #c4a96d;
+    --teal: #5ecfb8;
+    --text: #e8e6e0;
+    --text-mid: #9a9a92;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    line-height: 1.7;
+    padding: 24px 20px 60px;
+  }
+  .tag {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flux2);
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 30px; line-height: 1.2; color: #fff; margin-bottom: 6px; }
+  h1 .ide { color: var(--flux); }
+  .datum {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+  h2 { font-size: 18px; color: var(--flux); margin: 28px 0 10px; }
+  p { font-size: 15px; color: var(--text-mid); margin-bottom: 14px; }
+  p strong { color: var(--text); }
+  .callout {
+    border: 1px solid rgba(232,213,163,0.2);
+    border-left: 3px solid var(--flux);
+    background: rgba(232,213,163,0.04);
+    padding: 14px 16px;
+    margin: 18px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+  .callout strong { color: var(--flux); }
+  .fuss {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="tag">Update · IDEom 0.2.4.1</div>
+  <h1>Ein Anbieter mehr — und ein <span class="ide">Fehler weniger</span></h1>
+  <div class="datum">31. Juli 2026</div>
+
+  <p><strong>Xiaomi MiMo ist jetzt ein eigener Punkt in der Anbieterliste.</strong>
+  Zwei sogar: einer für das Guthaben-Konto, einer für das Token-Plan-Abo. Die
+  beiden brauchen verschiedene Adressen, und der Hinweis darunter sagt dir,
+  welcher Schlüssel wohin gehört — weil genau das heute eine Stunde
+  Fehlersuche gekostet hat.</p>
+
+  <h2>Warum ausgerechnet MiMo</h2>
+  <p>Die Modelle sind auf <strong>lange Werkzeugketten</strong> getrimmt —
+  lesen, schreiben, bauen, Fehlerlog lesen, reparieren, neu bauen. Genau das,
+  was ein Agent in einer IDE den ganzen Tag macht, und genau die Stelle, an
+  der viele Modelle den Faden verlieren. Dazu ein sehr großer Kontext, was
+  bedeutet: mehr Projekt im Blick statt Raten.</p>
+
+  <h2>Löschen heißt jetzt löschen</h2>
+  <p>Bisher blieb beim Entfernen einer KI-Anbindung mehr liegen, als man
+  sehen konnte: der <strong>gemerkte Schlüssel</strong>, das Häkchen in der
+  Auswahl, und der aktive Zustand. Nach einem Neustart war das gelöschte
+  Modell wieder da — und beim Neuanlegen setzte die App still den alten
+  Schlüssel ein.</p>
+
+  <div class="callout">
+    Wer einen widerrufenen Schlüssel hatte, bekam dadurch <strong>401 —
+    ohne dass irgendetwas darauf hindeutete</strong>. Das Feld zeigt ja nur
+    Punkte; ein alter Schlüssel sieht darin aus wie ein frisch eingefügter.
+  </div>
+
+  <p>Jetzt räumt das Löschen alles drei weg. Und das Schlüsselfeld hat ein
+  <strong>✕ zum Leeren</strong> und sagt dir, wenn ein gespeicherter
+  Schlüssel eingesetzt wurde, statt so zu tun, als hättest du ihn gerade
+  eingegeben.</p>
+
+  <h2>Gefunden hat es der Nutzer, nicht der Code</h2>
+  <p>Der Fehler stand nicht im Code — er stand in dem, was <em>nicht</em>
+  dort stand. Aufgefallen ist er beim Benutzen: „gelöscht, aber nach dem
+  Neustart wieder da". Aus drei solchen Beobachtungen wurde eine Vermutung,
+  und die stimmte. <strong>Deshalb steht der Melde-Knopf in jedem Screen.</strong></p>
+
+  <div class="fuss">IDEom · offen gebaut</div>
+</body>
+</html>
