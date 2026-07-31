@@ -286,6 +286,42 @@ h1 em { font-style: italic; color: var(--gold-hell); }
   color: var(--text-mid); border: 1px solid var(--linie); background: transparent;
 }
 .knopf-leise:hover { color: var(--text); border-color: var(--text-dim); }
+/* ---------------------------------------------------------------------
+   Passender Download zuerst — ohne etwas auszublenden.
+
+   Reine CSS-Lösung: "pointer: coarse" heißt Finger statt Maus, zusammen
+   mit der Breite ist das ein guter Anhaltspunkt für ein Telefon. Ohne
+   JavaScript, und wenn die Erkennung danebenliegt, sieht man trotzdem
+   beide Knöpfe — nur in anderer Reihenfolge. Ausblenden wäre der Fehler:
+   Geräte-Erkennung irrt sich (Windows-Tablets, Desktop-Modus), und Links
+   werden geteilt.
+
+   Standard ist die PC-Sicht, weil ein Rechner ohne Touch die verlässlichere
+   Erkennung ist.
+--------------------------------------------------------------------- */
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+/* PC: Desktop-Download betonen, APK bleibt sichtbar */
+@media (hover: hover) and (pointer: fine) {
+  .hero-cta .cta-pc {
+    order: -1;
+    background: var(--gold); color: var(--nacht); border: none;
+    box-shadow: 0 6px 24px var(--gold-glow);
+  }
+  .hero-cta .cta-pc:hover { transform: translateY(-1px); box-shadow: 0 10px 30px var(--gold-glow); }
+  .hero-cta .cta-handy {
+    background: transparent; color: var(--text-mid);
+    border: 1px solid var(--linie); box-shadow: none;
+  }
+  .hero-cta .cta-handy:hover { color: var(--text); border-color: var(--text-dim); }
+}
+
+/* Telefon/Tablet: APK zuerst — hier bleibt alles beim Ursprungszustand,
+   der Desktop-Knopf steht leise darunter. */
+@media (pointer: coarse) {
+  .hero-cta .cta-handy { order: -1; }
+}
+
 .hero-note {
   margin-top: 16px; font-family: var(--mono); font-size: 12.5px; color: var(--text-dim);
 }

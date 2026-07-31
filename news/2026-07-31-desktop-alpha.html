@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IDEom bekommt einen Schreibtisch</title>
+<style>
+  :root {
+    --bg: #0a0a08;
+    --surface: #171715;
+    --border: #2e2e2a;
+    --flux: #e8d5a3;
+    --flux2: #c4a96d;
+    --teal: #5ecfb8;
+    --text: #e8e6e0;
+    --text-mid: #9a9a92;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Georgia, serif;
+    line-height: 1.7;
+    padding: 24px 20px 60px;
+  }
+  .tag {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--flux2);
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 30px; line-height: 1.2; color: #fff; margin-bottom: 6px; }
+  h1 .ide { color: var(--flux); }
+  .datum {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--text-mid);
+    margin-bottom: 28px;
+  }
+  h2 { font-size: 18px; color: var(--flux); margin: 28px 0 10px; }
+  p { font-size: 15px; color: var(--text-mid); margin-bottom: 14px; }
+  p strong { color: var(--text); }
+  .callout {
+    border: 1px solid rgba(232,213,163,0.2);
+    border-left: 3px solid var(--flux);
+    background: rgba(232,213,163,0.04);
+    padding: 14px 16px;
+    margin: 18px 0;
+    font-size: 14px;
+    color: var(--text-mid);
+  }
+  .callout strong { color: var(--flux); }
+  .lade {
+    display: block;
+    border: 1px solid rgba(232,213,163,0.25);
+    background: rgba(232,213,163,0.05);
+    padding: 13px 16px;
+    margin: 10px 0;
+    text-decoration: none;
+    color: var(--flux);
+    font-family: monospace;
+    font-size: 14px;
+  }
+  .lade span { display: block; color: var(--text-mid); font-size: 11px; margin-top: 4px; }
+  .pruef {
+    font-family: monospace;
+    font-size: 10.5px;
+    color: var(--text-mid);
+    word-break: break-all;
+    margin: 6px 0 18px;
+  }
+  .protokoll {
+    font-family: monospace;
+    font-size: 12px;
+    background: #000;
+    border: 1px solid var(--border);
+    padding: 12px 14px;
+    margin: 16px 0;
+    color: var(--text-mid);
+    white-space: pre;
+    overflow-x: auto;
+  }
+  .protokoll b { color: var(--flux); font-weight: normal; }
+  .fuss {
+    margin-top: 40px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="tag">Release · IDEom Desktop 0.1.0 Alpha</div>
+  <h1>IDEom bekommt einen <span class="ide">Schreibtisch</span></h1>
+  <div class="datum">31. Juli 2026</div>
+
+  <p>IDEom kann seit Wochen Apps <strong>direkt auf dem Handy</strong>
+  bauen — dafür braucht es nichts weiter als das Telefon. Wer aber einen
+  PC hat, konnte ihn bisher nur über ein Skript einspannen, das man von
+  Hand starten musste und das ausgerechnet dann nicht erreichbar war, wenn
+  man es brauchte. Damit ist Schluss: <strong>IDEom Desktop</strong> ist ein
+  richtiges Programm.</p>
+
+  <h2>Was es macht</h2>
+  <p>Es zeigt die Adresse, die man im Handy einträgt — groß, mit dem Namen
+  der Netzwerkkarte darunter, damit man nicht aus Versehen die des
+  virtuellen Adapters erwischt. Danach nimmt es Bau-Anfragen vom Telefon
+  entgegen, baut die App auf dem PC und schickt sie zurück. Im Protokoll
+  sieht man live, was passiert:</p>
+
+  <div class="protokoll">16:26:31  Bau angefragt: beispiel
+          1 Quelldatei(en) übernommen
+16:26:39  <b>-&gt; fertig in 7.4 s (11262 KB)</b></div>
+
+  <p>Der PC übernimmt damit die Arbeit, für die das Handy am längsten
+  braucht — und das Telefon bleibt kühl.</p>
+
+  <h2>Der Fehler, den es nebenbei behebt</h2>
+  <p>Das alte Skript hörte ohne Administratorrechte <strong>nur auf den
+  eigenen Rechner</strong>. Vom Telefon aus war es damit gar nicht
+  erreichbar — es sah aus wie ein Netzwerkproblem und war eine
+  Windows-Eigenheit. Der neue Server hat das Problem nicht.</p>
+
+  <h2>Was du dafür brauchst</h2>
+  <div class="callout">
+    <strong>Ein eingerichtetes Android-SDK auf dem PC.</strong> Ohne läuft
+    das Verbinden, aber nicht das Bauen — das Fenster sagt dir das vorher,
+    statt dich in einen Fehler laufen zu lassen. Und der
+    <strong>allererste Bau dauert länger</strong>, weil sich die Bau-Werkzeuge
+    einmalig einrichten. Danach sind es Sekunden.
+  </div>
+  <p>Wer kein SDK hat, verliert nichts: <strong>der Bau auf dem Gerät
+  funktioniert unverändert weiter</strong>. Desktop ist die Abkürzung, nicht
+  die Voraussetzung.</p>
+
+  <h2>Herunterladen</h2>
+  <a class="lade" href="https://github.com/KiidInx/ideom-mobile/releases/download/desktop-v0.1.0-alpha/IDEom-Desktop-0.1.0-Alpha.zip">
+    IDEom-Desktop-0.1.0-Alpha.zip · 60 MB
+    <span>Entpacken und IDEom.exe starten — keine Installation nötig</span>
+  </a>
+  <div class="pruef">SHA-256: 3C9A794332CCCB733842B36D65C26A98EC16194ACC1918042C1D322868215844</div>
+
+  <a class="lade" href="https://github.com/KiidInx/ideom-mobile/releases/download/desktop-v0.1.0-alpha/IDEom-Desktop-0.1.0-Alpha.msi">
+    IDEom-Desktop-0.1.0-Alpha.msi · 61 MB
+    <span>Installationsprogramm, falls dir das lieber ist</span>
+  </a>
+  <div class="pruef">SHA-256: 9CBB3D9159F5C01775C68A634AA8D5D60E70AC7F7A355522A12CF560C45DE5E1</div>
+
+  <h2>Windows wird warnen — das ist erwartet</h2>
+  <p>Die Datei ist <strong>noch nicht signiert</strong>. Beim ersten Start
+  zeigt Windows deshalb „Der Computer wurde durch Windows geschützt".
+  Klick auf <strong>Weitere Informationen</strong> und dann auf
+  <strong>Trotzdem ausführen</strong>.</p>
+  <p>Ein Signaturzertifikat kostet laufend Geld, und das gibt IDEom im
+  Moment nicht her. Wir sagen es lieber vorher, als so zu tun, als gäbe es
+  die Warnung nicht. Wer möchte, kann die Prüfsummen oben mit der
+  heruntergeladenen Datei vergleichen.</p>
+
+  <h2>Alpha heißt Alpha</h2>
+  <p>Das hier ist die erste Fassung, entstanden an einem Nachmittag. Sie
+  macht eine Sache und die richtig: Bau-Anfragen vom Handy annehmen und
+  eine fertige App zurückgeben. Ein Editor, ein Agent und ein Terminal
+  kommen — <strong>die Entwürfe dafür stehen schon.</strong></p>
+
+  <div class="fuss">IDEom · offen gebaut</div>
+</body>
+</html>

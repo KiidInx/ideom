@@ -1,6 +1,13 @@
 {
   "meldungen": [
     {
+      "datum": "2026-07-31",
+      "typ": "RELEASE",
+      "titel": "IDEom bekommt einen Schreibtisch",
+      "teaser": "IDEom Desktop 0.1.0 Alpha: der PC nimmt Bau-Anfragen vom Handy an und schickt die fertige App zurück — in Sekunden.",
+      "dokument": "news/2026-07-31-desktop-alpha.html"
+    },
+    {
       "datum": "2026-07-30",
       "typ": "UPDATE",
       "titel": "Alles aus einem Guss",
